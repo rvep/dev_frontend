@@ -1,6 +1,11 @@
-<div id="google-signin-wrap">
-    <div id="google-signin" (click)="signIn()">
-        <span class="icon"></span>
-        <span class="button-text">Google</span>
-    </div>
+<div *ngIf="!_authModel?.isAuthorized">
+  <div id="google-signin-wrap">
+      <div id="google-signin" (click)="signIn()">
+          <span class="icon"></span>
+          <span class="button-text">Google</span>
+      </div>
+  </div>
+</div>
+<div *ngIf="_authModel?.isAuthorized">
+  <button class="btn btn-primary" (click)="signOut()">Sign out</button>
 </div>
