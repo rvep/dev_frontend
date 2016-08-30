@@ -48,6 +48,10 @@ export class Auth {
       this._authService.signIn();
     }
 
+    public signOut(provider:string):void {
+      this._authService.signOut();
+    }
+
     // process auth changes
     private processAuthChange(isAuthorized:boolean):void {
         // update model
