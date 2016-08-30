@@ -3,11 +3,13 @@ import { CORE_DIRECTIVES } from '@angular/common';
 import { AuthService } from '../auth/service/auth.service';
 import { AuthModel } from "../auth/model/auth.model";
 
+import { Auth } from '../auth/auth.component';
+
 @Component({
     selector: 'dashboard',
     templateUrl: 'dashboard.component.html',
     styleUrls: ['dashboard.scss'],
-    directives: [CORE_DIRECTIVES]
+    directives: [CORE_DIRECTIVES, Auth]
 })
 export class Dashboard {
 
