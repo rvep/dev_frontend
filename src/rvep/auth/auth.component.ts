@@ -55,7 +55,10 @@ export class Auth {
 
         // if user is authorized, navigate to dashboard
         if (isAuthorized) {
-            this._router.navigate(['dashboard']);
+            // check if already on dashboard page
+            if (!this._router.isActive('dashboard', true)) {
+              this._router.navigate(['dashboard']);
+            }
         } else {
             // check if already on signin page
             if (!this._router.isActive('', true)) {
