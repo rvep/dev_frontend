@@ -1,0 +1,32 @@
+/************
+ *   vars
+ ************/
+$font: '';
+$fontColor: '';
+$bgColor: '';
+
+/************
+ *  mixins
+ ************/
+@mixin headingText() {
+  text-align: center;
+}
+
+/************
+ *  classes
+ ************/
+.login-container {
+   margin: 200px auto 0;
+ }
+
+.login-wrap {
+  padding: 20px;
+}
+
+.login-title {
+  @include headingText();
+}
+
+.login-header {
+  @include headingText();
+}

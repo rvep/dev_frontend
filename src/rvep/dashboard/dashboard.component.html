@@ -1,0 +1,4 @@
+<div *ngIf="authModel?.isAuthorized">
+    <h3>Dashboard</h3>
+    <a href="#" (click)="authService.signOut()">Sign out</a>
+</div>
