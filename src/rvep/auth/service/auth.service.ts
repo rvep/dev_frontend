@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 
-import { GoogleAuthService } from './googleauth.service';
+import { FirebaseAuthService } from './firebaseauth.service';
 import { VerifyAuthService } from './verifyauth.service';
 import { AuthModel } from "../model/auth.model";
 
@@ -12,7 +12,7 @@ export class AuthService {
     private _authModel:AuthModel;
 
     // constructor
-    constructor(private _glAuthService:GoogleAuthService,
+    constructor(private _fbAuthService:FirebaseAuthService,
                 private _verifyAuthService:VerifyAuthService) {
         // init vars
         this.emitter$ = new EventEmitter<boolean>();
@@ -32,7 +32,7 @@ export class AuthService {
     // auth check
     private authCheck(isVerified:boolean):boolean {
         // user is signed in && authorized
-        if (this._glAuthService.isUserSignedIn() && isVerified) {
+        if (this._fbAuthService.isUserSignedIn() && isVerified) {
             return true;
         }
 
@@ -52,7 +52,7 @@ export class AuthService {
     // sign user out
     public signOut():void {
         // signout of google
-        this._glAuthService.signOut();
+        this._fbAuthService.signOut();
         // unverify
         this._verifyAuthService.unverify();
         // update auth state and push
@@ -61,7 +61,7 @@ export class AuthService {
 
     public signIn():void {
         // signin to google
-        this._glAuthService.signIn();
+        this._fbAuthService.signIn();
     }
 
 }

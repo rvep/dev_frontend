@@ -10,7 +10,7 @@ import { Rvep } from './rvep.component';
 import { Signin } from './signin/signin.component';
 import { Dashboard } from './dashboard/dashboard.component';
 import { AuthService } from './auth/service/auth.service';
-import { GoogleAuthService } from './auth/service/googleauth.service';
+import { FirebaseAuthService } from './auth/service/firebaseauth.service';
 import { VerifyAuthService } from './auth/service/verifyauth.service';
 
 export const firebaseConfig = {
@@ -36,7 +36,7 @@ export const firebaseAuthConfig = {
         rvepRouterProviders,
         provide(APP_BASE_HREF, {useValue: '/'}),
         provide(LocationStrategy, {useClass: HashLocationStrategy}),
-        AuthService, GoogleAuthService, VerifyAuthService
+        AuthService, FirebaseAuthService, VerifyAuthService
     ],
     bootstrap: [Rvep]
 })

@@ -3,7 +3,7 @@ import { CORE_DIRECTIVES } from '@angular/common';
 import { Router } from '@angular/router';
 import { AngularFire } from 'angularfire2';
 
-import { GoogleAuthService } from './service/googleauth.service';
+import { FirebaseAuthService } from './service/firebaseauth.service';
 import { AuthService } from './service/auth.service';
 import { AuthModel } from './model/auth.model';
 import { Observable } from 'rxjs/Observable';
