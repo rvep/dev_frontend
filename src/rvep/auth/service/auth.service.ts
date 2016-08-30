@@ -57,6 +57,8 @@ export class AuthService {
         this._verifyAuthService.unverify();
         // update auth state and push
         this._authModel.isAuthorized = false;
+        // push state
+        this.pushState();
     }
 
     public signIn():void {
