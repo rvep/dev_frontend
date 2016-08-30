@@ -17,7 +17,7 @@ export const firebaseConfig = {
   apiKey: "AIzaSyDuRDCqn1ITVy_5gbg6ABnC2xxOR0I1grY",
   authDomain: "rvep-dev.firebaseapp.com",
   databaseURL: "https://rvep-dev.firebaseio.comm",
-  storageBucket: ""
+  storageBucket: "rvep-dev.appspot.com"
 }
 
 export const firebaseAuthConfig = {
