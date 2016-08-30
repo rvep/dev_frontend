@@ -1,6 +1,9 @@
 # custom
 dist/
 coverage/
+.idea/
+
+dev_frontend.iml
 
 # Created by https://www.gitignore.io/api/node,intellij,eclipse
 
@@ -155,4 +158,3 @@ local.properties
 
 # Code Recommenders
 .recommenders/
-
