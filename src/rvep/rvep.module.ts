@@ -14,10 +14,10 @@ import { FirebaseAuthService } from './auth/service/firebaseauth.service';
 import { VerifyAuthService } from './auth/service/verifyauth.service';
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyC1aHWikGh18FBBwuVbSGuUu1lQvWCOUnY",
-  authDomain: "rvep-1212.firebaseapp.com",
-  databaseURL: "https://rvep-1212.firebaseio.com",
-  storageBucket: "rvep-1212.appspot.com"
+  apiKey: "AIzaSyDuRDCqn1ITVy_5gbg6ABnC2xxOR0I1grY",
+  authDomain: "rvep-dev.firebaseapp.com",
+  databaseURL: "https://rvep-dev.firebaseio.comm",
+  storageBucket: ""
 }
 
 export const firebaseAuthConfig = {
