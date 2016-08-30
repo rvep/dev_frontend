@@ -31,7 +31,7 @@ export class VerifyAuthService {
         await authState.auth.getToken(true).then(token => {tokenId = token});
         var headers = new Headers({'Content-Type': 'application/json'});
         var body = JSON.stringify({'tokenId': tokenId});
-        var url = 'http://localhost:8080/api/google/auth/verify';
+        var url = 'http://localhost:8080/api/firebase/auth/verify';
         // first _http post request
         this._http.post(url, body, {headers: headers})
         // map response to json
