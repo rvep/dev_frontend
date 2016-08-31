@@ -3,13 +3,11 @@ import { CORE_DIRECTIVES } from '@angular/common';
 import { AuthService } from '../auth/service/auth.service';
 import { AuthModel } from "../auth/model/auth.model";
 
-import { Auth } from '../auth/auth.component';
-
 @Component({
     selector: 'dashboard',
     templateUrl: 'dashboard.component.html',
     styleUrls: ['dashboard.scss'],
-    directives: [CORE_DIRECTIVES, Auth]
+    directives: [CORE_DIRECTIVES]
 })
 export class Dashboard {
 
@@ -26,6 +24,10 @@ export class Dashboard {
         this._authService.emitter$.subscribe((isAuthorized) => {
           this._authModel.isAuthorized = isAuthorized;
         });
+    }
+
+    public signOut() {
+      this._authService.signOut();
     }
 
     public hideSideBar() {
