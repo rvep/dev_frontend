@@ -1,40 +1,33 @@
+$google-btn-width: 191px;
+$google-btn-height: 46px;
+
+@mixin google-btn-dimensions {
+  width: $google-btn-width;
+  height: $google-btn-height;
+}
+
 #google-signin-wrap {
   margin: 0 auto;
-  width: 140px;
+  @include google-btn-dimensions();
   padding-top: 50px;
 }
 
 #google-signin {
   display: inline-block;
-  width: 140px;
-  background: white;
-  color: #444;
-  border-radius: 5px;
-  border: thin solid #888;
-  box-shadow: 1px 1px 1px grey;
-  white-space: nowrap;
+  @include google-btn-dimensions();
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url('assets/img/google/btn_google_dark.png');
 }
 
 #google-signin:hover {
-  cursor: pointer;
-  background: grey;
+  background-image: url('assets/img/google/btn_google_focus.png');
 }
 
-#google-signin span.icon {
-  background: url('assets/img/g-normal.png') transparent 5px 50% no-repeat;
-  display: inline-block;
-  vertical-align: middle;
-  width: 42px;
-  height: 42px;
+#google-signin:disabled {
+  background-image: url('assets/img/google/btn_google_disabled.png');
 }
 
-#google-signin span.button-text {
-  display: inline-block;
-  vertical-align: middle;
-  padding-left: 15px;
-  padding-right: 15px;
-  font-size: 14px;
-  font-weight: bold;
-  /* Use the Roboto font that is loaded in the <head> */
-  font-family: 'Roboto', sans-serif;
+#google-signin:active {
+  background-image: url('assets/img/google/btn_google_pressed.png');
 }
