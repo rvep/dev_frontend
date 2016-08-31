@@ -46,7 +46,25 @@
 }
 
 .sidebar > li {
+  list-style: none;
   cursor: pointer;
+}
+
+.sidebar li a {
+  color: $font-color !important;
+}
+
+.sidebar li.active a {
+  color: $color-teal !important;
+}
+
+.sidebar li a:hover, a:focus {
+  text-decoration: none !important;
+  color: $color-teal !important;
+}
+
+.sidebar-item {
+  padding-top: 1em;
 }
 
 li.signout {
