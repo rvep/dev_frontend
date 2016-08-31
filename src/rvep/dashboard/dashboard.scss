@@ -31,7 +31,7 @@
   color: $color-teal;
 }
 
-.sidebar-button span {
+.sidebar-button > span {
   font-size: 1.2em;
   margin-top: .1em;
   padding-left: 1em;
@@ -44,7 +44,7 @@
   top: 3.5em;
 }
 
-.sidebar li {
+.sidebar > li {
   cursor: pointer;
 }
 
