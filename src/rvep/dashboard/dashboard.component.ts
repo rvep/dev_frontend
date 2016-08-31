@@ -29,6 +29,8 @@ export class Dashboard {
     }
 
     public hideSideBar() {
-      jQuery('.sidebar').toggle();
+      jQuery('.sidebar')
+        .stop()
+        .animate({width: 'toggle'});
     }
 }
