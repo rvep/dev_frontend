@@ -30,7 +30,7 @@ export class Dashboard {
       this._authService.signOut();
     }
 
-    public hideSideBar() {
+    public toggleSideBar() {
       jQuery('.sidebar')
         .stop()
         .animate({width: 'toggle'});
