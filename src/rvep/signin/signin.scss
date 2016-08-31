@@ -1,11 +1,4 @@
 /************
- *   vars
- ************/
-$font: '';
-$fontColor: '';
-$bgColor: '';
-
-/************
  *  mixins
  ************/
 @mixin headingText() {
@@ -13,7 +6,7 @@ $bgColor: '';
 }
 
 /************
- *  classes
+ *  styles
  ************/
 .login-container {
    margin: 200px auto 0;
@@ -31,9 +24,6 @@ $bgColor: '';
   @include headingText();
 }
 
-/************
- *  ids
- ************/
 #headerSplit {
   width: 15em;
   border: .01em solid #00bfa5;

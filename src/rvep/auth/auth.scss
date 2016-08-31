@@ -1,11 +1,20 @@
+/************
+ *   vars
+ ************/
 $google-btn-width: 191px;
 $google-btn-height: 46px;
 
+/************
+ *  mixins
+ ************/
 @mixin google-btn-dimensions {
   width: $google-btn-width;
   height: $google-btn-height;
 }
 
+/************
+ *  styles
+ ************/
 #google-signin-wrap {
   margin: 0 auto;
   @include google-btn-dimensions();
