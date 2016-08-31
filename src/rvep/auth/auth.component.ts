@@ -38,6 +38,11 @@ export class Auth {
             });
     }
 
+    // on-init
+    ngOnInit() {
+      this.navigate();
+    }
+
     // on-destroy
     ngOnDestroy() {
         // unsubscribe from auth
@@ -56,19 +61,24 @@ export class Auth {
     private processAuthChange(isAuthorized:boolean):void {
         // update model
         this._authModel.isAuthorized = isAuthorized;
+        // navigate
+        this.navigate();
+    }
 
-        // if user is authorized, navigate to dashboard
-        if (isAuthorized) {
-            // check if already on dashboard page
-            if (!this._router.isActive('dashboard', true)) {
-              this._router.navigate(['dashboard']);
-            }
-        } else {
-            // check if already on signin page
-            if (!this._router.isActive('', true)) {
-                // otherwise redirect to signin page
-                this._router.navigate(['']);
-            }
-        }
+    // navigate based on auth
+    private navigate() {
+      // if user is authorized, navigate to dashboard
+      if (this._authModel.isAuthorized) {
+          // check if already on dashboard page
+          if (!this._router.isActive('dashboard', true)) {
+            this._router.navigate(['dashboard']);
+          }
+      } else {
+          // check if already on signin page
+          if (!this._router.isActive('', true)) {
+              // otherwise redirect to signin page
+              this._router.navigate(['']);
+          }
+      }
     }
 }
