@@ -1,6 +1,56 @@
 /************
+ *  imports
+ ************/
+ @import '../sass/colors';
+
+/************
  *  styles
  ************/
-.dashboard {
-  background-color: #00DD00;
+
+.navbar-fixed-top {
+  border: 0;
+}
+
+.navbar-header {
+  float: left;
+}
+
+.navbar-custom {
+  font-size: 1.5em;
+  background-color: $color-deep-purple2;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+}
+
+.sidebar-button {
+  cursor: pointer;
+  display: inline-block;
+  color: $font-color;
+}
+
+.sidebar-button:hover {
+  color: $color-teal;
+}
+
+.sidebar-button span {
+  font-size: 1.2em;
+  margin-top: .1em;
+  padding-left: 1em;
+}
+
+.sidebar {
+  position: fixed;
+  background-color: $color-deep-purple2;
+  height: 100%;
+  top: 3.5em;
+}
+
+.sidebar li {
+  cursor: pointer;
+}
+
+.content {
+  display: inline-block;
+  left: 8em;
+  top: 5em;
+  position: relative;
 }

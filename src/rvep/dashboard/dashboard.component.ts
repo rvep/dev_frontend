@@ -23,4 +23,8 @@ export class Dashboard {
         // init vars
         this._authModel = {isAuthorized:this._authService.isUserAuthorized()};
     }
+
+    public hideSideBar() {
+      jQuery('.sidebar').toggle();
+    }
 }

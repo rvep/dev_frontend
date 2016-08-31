@@ -1,8 +1,8 @@
 /************
  *   vars
  ************/
-$google-btn-width: 191px;
-$google-btn-height: 46px;
+$google-btn-width: 11.938em;
+$google-btn-height: 2.875em;
 
 /************
  *  mixins
@@ -18,7 +18,7 @@ $google-btn-height: 46px;
 #google-signin-wrap {
   margin: 0 auto;
   @include google-btn-dimensions();
-  padding-top: 50px;
+  padding-top: 3.5em;
 }
 
 #google-signin {

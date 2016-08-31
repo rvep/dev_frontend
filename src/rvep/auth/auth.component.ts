@@ -70,15 +70,15 @@ export class Auth {
       // if user is authorized, navigate to dashboard
       if (this._authModel.isAuthorized) {
           // check if already on dashboard page
-          if (!this._router.isActive('dashboard', true)) {
+          //if (!this._router.isActive('dashboard', true)) {
             this._router.navigate(['dashboard']);
-          }
+          //}
       } else {
           // check if already on signin page
-          if (!this._router.isActive('', true)) {
+          //if (!this._router.isActive('', true)) {
               // otherwise redirect to signin page
               this._router.navigate(['']);
-          }
+          //}
       }
     }
 }

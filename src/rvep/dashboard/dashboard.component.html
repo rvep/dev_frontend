@@ -1,6 +1,29 @@
-<div class="container-fluid">
-  <div *ngIf="_authModel?.isAuthorized">
-      <h3>Dashboard</h3>
+<div *ngIf="_authModel?.isAuthorized">
+
+  <nav class="navbar navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">RVEP</div>
+      <div class="sidebar-button">
+        <span class="fa fa-navicon" (click)='hideSideBar()'></span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="sidebar full">
+    <div class="container-fluid">
+      <ul class="nav nav-sidebar">
+          <li class="active">Overview</li>
+          <li>Reports</li>
+          <li>Analytics</li>
+          <li>Export</li>
+          <li><auth class="auth"></auth></li>
+      </ul>
+    </div>
   </div>
-  <auth class="auth"></auth>
+
+  <div class="content">
+    <div class="container-fluid">
+      <h3>Dashboard</h3>
+    </div>
+  </div>
 </div>
