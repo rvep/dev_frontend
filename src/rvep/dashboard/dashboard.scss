@@ -38,6 +38,7 @@
 }
 
 .sidebar {
+  z-index: 1000;
   position: fixed;
   background-color: $color-deep-purple2;
   height: 100%;
@@ -78,7 +79,6 @@ li.signout {
 
 .content {
   display: inline-block;
-  left: 9em;
-  top: 5em;
   position: relative;
+  top: 5em;
 }
