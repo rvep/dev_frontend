@@ -22,6 +22,10 @@ export class Dashboard {
     ngOnInit() {
         // init vars
         this._authModel = {isAuthorized:this._authService.isUserAuthorized()};
+
+        this._authService.emitter$.subscribe((isAuthorized) => {
+          this._authModel.isAuthorized = isAuthorized;
+        });
     }
 
     public hideSideBar() {
