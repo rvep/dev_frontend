@@ -24,6 +24,8 @@ export class Dashboard implements OnInit, AfterViewInit {
 
     // on-init
     ngOnInit() {
+        // navigate if not authorized
+        this._authService.navigate();
         // init vars
         this._authModel = {isAuthorized:this._authService.isUserAuthorized()};
         this._fbUser = new FirebaseUser();
@@ -31,7 +33,6 @@ export class Dashboard implements OnInit, AfterViewInit {
 
     // view init
     ngAfterViewInit() {
-      console.log('view init');
       this._fbUser = this._fbAuthService.getCurrentUser();
     }
 
