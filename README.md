@@ -5,6 +5,32 @@
 
 # rvep | dev_frontend
 
-rolling vote event planner
+rolling vote event planner | webclient
 
-typescript, webpack, angular2, karma, jasmine, bootstrap4, sass
+built using typescript, webpack, angular2, karma, jasmine, bootstrap4, sass
+
+built for app server [dev_backend](https://github.com/rvep/dev_backend)
+
+## pre-install
+
+1. install nodejs
+
+## install
+
+`$ git clone git@github.com:rvep/dev_frontend`
+
+## build & run
+
+* `$ npm install`
+* `$ npm run build && npm run test`
+* `$ npm run start`
+
+## contribute
+
+if you have any input, or contributions, please share!
+
+## donations
+[donate](https://www.paypal.me/BorysNiewiadomski) a cup of coffee
+
+## license
+[MIT](/LICENSE)
