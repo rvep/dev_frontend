@@ -43,11 +43,11 @@ export class Auth implements OnDestroy {
         this._authSubscription.unsubscribe();
     }
 
-    public signIn(provider:string):void {
+    private signIn(provider:string):void {
       this._authService.signIn();
     }
 
-    public signOut(provider:string):void {
+    private signOut(provider:string):void {
       this._authService.signOut();
     }
 

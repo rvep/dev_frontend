@@ -9,10 +9,10 @@ import { CORE_DIRECTIVES } from '@angular/common';
 })
 export class Navbar {
 
-  public toggleSideBar() {
+  private toggleSideBar() {
     jQuery('.sidebar')
       .stop()
       .animate({width: 'toggle'});
   }
-  
+
 }
