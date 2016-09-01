@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseAuthState } from 'angularfire2';
 
 import { FirebaseUser } from '../model/firebaseuser.model';
@@ -8,7 +8,6 @@ import { VerifyAuthService } from './verifyauth.service';
 @Injectable()
 export class FirebaseAuthService {
     // vars
-    public emitter$:EventEmitter<boolean>;
     private _fbAuthModel:FirebaseAuthModel;
     private _fbUser:FirebaseUser;
     private _authFlag:boolean = true;
@@ -17,7 +16,6 @@ export class FirebaseAuthService {
     constructor(private _verifyAuthService: VerifyAuthService,
                 private _af: AngularFire) {
         // init vars
-        this.emitter$ = new EventEmitter<boolean>();
         this._fbAuthModel = new FirebaseAuthModel();
         this._fbUser = new FirebaseUser();
 
@@ -42,21 +40,12 @@ export class FirebaseAuthService {
             this._fbAuthModel.isSignedIn = true;
             // verify
             this._verifyAuthService.verify(auth);
-            // push state
-            this.pushState();
           } else if(auth == null && !this._authFlag) {
             this._authFlag = true;
             console.log('user signed out');
             this._fbAuthModel.isSignedIn = false;
-            // push state
-            this.pushState();
           }
         });
-    }
-
-    // push state
-    private pushState():void {
-        this.emitter$.emit(this._fbAuthModel.isSignedIn);
     }
 
     // signout of google

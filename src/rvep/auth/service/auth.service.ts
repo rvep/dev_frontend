@@ -34,16 +34,6 @@ export class AuthService {
               this.navigate();
             }
         });
-
-        // subscribe to firebase auth state
-        /*
-        this._fbAuthService.emitter$.subscribe((isSignedIn) => {
-          console.log('sign in state received: ' + isSignedIn);
-          if(!isSignedIn) {
-            this.signOut();
-          }
-        });
-        */
     }
 
     // auth check
