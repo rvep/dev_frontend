@@ -13,6 +13,8 @@ built for app server [dev_backend](https://github.com/rvep/dev_backend)
 
 ## pre-install
 
+1. get the app server up and running
+    - [dev_backend](https://github.com/rvep/dev_backend)
 1. install nodejs
 
 ## install
