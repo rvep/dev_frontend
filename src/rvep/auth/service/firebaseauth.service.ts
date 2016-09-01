@@ -23,6 +23,7 @@ export class FirebaseAuthService {
         // subscribe to firebase auth
         this._af.auth.subscribe((auth) => {
           if(auth) {
+            console.log('user signed in');
             // set fb user
             this._fbUser.uid = auth.google.uid;
             this._fbUser.email = auth.google.email;
@@ -35,6 +36,7 @@ export class FirebaseAuthService {
             // push state
             this.pushState();
           } else {
+            console.log('user signed out');
             this._fbAuthModel.isSignedIn = false;
             // push state
             this.pushState();

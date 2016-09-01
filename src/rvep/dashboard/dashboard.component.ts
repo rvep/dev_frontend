@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CORE_DIRECTIVES } from '@angular/common';
 
 
@@ -13,7 +13,7 @@ import { FirebaseUser } from "../auth/model/firebaseuser.model";
     styleUrls: ['dashboard.scss'],
     directives: [CORE_DIRECTIVES]
 })
-export class Dashboard {
+export class Dashboard implements OnInit, AfterViewInit {
 
     private _authModel:AuthModel;
     private _fbUser:FirebaseUser;
@@ -29,9 +29,14 @@ export class Dashboard {
         this._fbUser = new FirebaseUser();
 
         this._authService.emitter$.subscribe((isAuthorized) => {
-          this._fbUser = this._fbAuthService.getCurrentUser();
           this._authModel.isAuthorized = isAuthorized;
         });
+    }
+
+    // view init
+    ngAfterViewInit() {
+      console.log('view init');
+      this._fbUser = this._fbAuthService.getCurrentUser();
     }
 
     public signOut() {

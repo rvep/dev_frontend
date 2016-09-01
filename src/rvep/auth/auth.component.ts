@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, OnInit, OnDestroy } from '@angular/core';
 import { CORE_DIRECTIVES } from '@angular/common';
 import { Router } from '@angular/router';
 import { AngularFire } from 'angularfire2';
@@ -15,7 +15,7 @@ import { Observable } from 'rxjs/Observable';
     styleUrls: ['auth.scss'],
     directives: [CORE_DIRECTIVES]
 })
-export class Auth {
+export class Auth implements OnInit, OnDestroy {
 
     // vars
     private _authModel:AuthModel;
