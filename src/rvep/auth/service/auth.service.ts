@@ -27,6 +27,13 @@ export class AuthService {
             this._authModel.isAuthorized = this.authCheck(isVerified);
             this.pushState();
         });
+
+        // subscribe to firebase auth state
+        this._fbAuthService.emitter$.subscribe((isSignedIn) => {
+          if(!isSignedIn) {
+            this.signOut();
+          }
+        });
     }
 
     // auth check
