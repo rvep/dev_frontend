@@ -1,3 +1,3 @@
-export interface VerifyAuthModel {
-    isVerified:boolean;
+export class VerifyAuthModel {
+    public isVerified:boolean = false;
 }

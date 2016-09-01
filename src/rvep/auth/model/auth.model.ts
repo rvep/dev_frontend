@@ -1,3 +1,3 @@
-export interface AuthModel {
-    isAuthorized:boolean;
+export class AuthModel {
+    public isAuthorized:boolean = false;
 }

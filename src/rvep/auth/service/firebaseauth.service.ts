@@ -15,7 +15,7 @@ export class FirebaseAuthService {
                 private _af: AngularFire) {
         // init var
         this.emitter$ = new EventEmitter<boolean>();
-        this._fbAuthModel = {isSignedIn: false};
+        this._fbAuthModel = new FirebaseAuthModel;
 
         // subscribe to firebase auth
         this._af.auth.subscribe((auth) => {

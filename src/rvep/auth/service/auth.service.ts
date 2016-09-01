@@ -16,7 +16,7 @@ export class AuthService {
                 private _verifyAuthService:VerifyAuthService) {
         // init vars
         this.emitter$ = new EventEmitter<boolean>();
-        this._authModel = {isAuthorized: false};
+        this._authModel = new AuthModel();
 
         // subscribe to auth verification emitter
         this._verifyAuthService.emitter$.subscribe((isVerified) => {

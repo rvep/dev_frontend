@@ -16,7 +16,7 @@ export class VerifyAuthService {
     constructor(private _http:Http) {
         // init vars
         this.emitter$ = new EventEmitter<boolean>();
-        this._verifyAuthModel = {isVerified: false};
+        this._verifyAuthModel = new VerifyAuthModel();
     }
 
     // push state
