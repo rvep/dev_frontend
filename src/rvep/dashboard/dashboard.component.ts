@@ -6,20 +6,13 @@ import { FirebaseAuthService } from '../auth/services/firebaseauth.service';
 import { ContentSwap } from './services/contentswap.service';
 import { AuthModel } from '../auth/models/auth.model';
 import { FirebaseUser } from '../auth/models/firebaseuser.model';
-import { Navbar } from './components/navbar/navbar.component';
-import { Sidebar } from './components/sidebar/sidebar.component';
-import { Home } from './components/home/home.component';
-import { Profile } from './components/profile/profile.component';
-import { Events } from './components/events/events.component';
-import { AddEvent } from './components/addevent/addevent.component';
 
 @Component({
     selector: 'dashboard',
     templateUrl: 'dashboard.component.html',
     styleUrls: ['dashboard.scss'],
     encapsulation: ViewEncapsulation.None,
-    directives: [CORE_DIRECTIVES, Navbar, Sidebar, Home, Profile,
-                 Events, AddEvent]
+    directives: [CORE_DIRECTIVES]
 })
 export class Dashboard implements OnInit {
 

@@ -9,6 +9,13 @@ import { rvepRouterProviders } from './rvep.routes';
 import { Rvep } from './rvep.component';
 import { Signin } from './signin/signin.component';
 import { Dashboard } from './dashboard/dashboard.component';
+import { Auth } from './auth/auth.component';
+import { Home } from './dashboard/components/home/home.component';
+import { Profile } from './dashboard/components/profile/profile.component';
+import { Navbar } from './dashboard/components/navbar/navbar.component';
+import { Sidebar } from './dashboard/components/sidebar/sidebar.component';
+import { Events } from './dashboard/components/events/events.component';
+import { AddEvent } from './dashboard/components/addevent/addevent.component';
 import { AuthService } from './auth/services/auth.service';
 import { FirebaseAuthService } from './auth/services/firebaseauth.service';
 import { VerifyAuthService } from './auth/services/verifyauth.service';
@@ -29,7 +36,8 @@ export const firebaseAuthConfig = {
 @NgModule({
     imports: [BrowserModule, FormsModule, ReactiveFormsModule,
               AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)],
-    declarations: [Rvep, Signin, Dashboard],
+    declarations: [Rvep, Signin, Dashboard, Navbar, Sidebar,
+                   Home, Profile, Events, AddEvent, Auth],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [
         FIREBASE_PROVIDERS,
