@@ -1,4 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { FirebaseAuthService } from './firebaseauth.service';
 import { VerifyAuthService } from './verifyauth.service';
@@ -13,7 +14,8 @@ export class AuthService {
 
     // constructor
     constructor(private _fbAuthService:FirebaseAuthService,
-                private _verifyAuthService:VerifyAuthService) {
+                private _verifyAuthService:VerifyAuthService,
+                private _router:Router) {
         // init vars
         this.emitter$ = new EventEmitter<boolean>();
         this._authModel = new AuthModel();
@@ -26,15 +28,22 @@ export class AuthService {
             // auth check and push state
             this._authModel.isAuthorized = this.authCheck(isVerified);
             this.pushState();
+
+            if (isVerified) {
+              // navigate
+              this.navigate();
+            }
         });
 
         // subscribe to firebase auth state
+        /*
         this._fbAuthService.emitter$.subscribe((isSignedIn) => {
           console.log('sign in state received: ' + isSignedIn);
           if(!isSignedIn) {
             this.signOut();
           }
         });
+        */
     }
 
     // auth check
@@ -67,11 +76,30 @@ export class AuthService {
         this._authModel.isAuthorized = false;
         // push state
         this.pushState();
+        // navigate
+        this.navigate();
     }
 
     public signIn():void {
         // signin to google
         this._fbAuthService.signIn();
+    }
+
+    // navigate based on auth
+    public navigate() {
+      // if user is authorized, navigate to dashboard
+      if (this._authModel.isAuthorized) {
+          // check if already on dashboard page
+          if (!this._router.isActive('dashboard', true)) {
+            this._router.navigate(['dashboard']);
+          }
+      } else {
+          // check if already on signin page
+          if (!this._router.isActive('', true)) {
+              // otherwise redirect to signin page
+              this._router.navigate(['']);
+          }
+      }
     }
 
 }

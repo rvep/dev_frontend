@@ -1,6 +1,5 @@
-import { Component, NgZone, OnInit, OnDestroy } from '@angular/core';
+import { Component, NgZone, OnDestroy } from '@angular/core';
 import { CORE_DIRECTIVES } from '@angular/common';
-import { Router } from '@angular/router';
 import { AngularFire } from 'angularfire2';
 
 import { FirebaseAuthService } from './service/firebaseauth.service';
@@ -15,7 +14,7 @@ import { Observable } from 'rxjs/Observable';
     styleUrls: ['auth.scss'],
     directives: [CORE_DIRECTIVES]
 })
-export class Auth implements OnInit, OnDestroy {
+export class Auth implements OnDestroy {
 
     // vars
     private _authModel:AuthModel;
@@ -23,7 +22,7 @@ export class Auth implements OnInit, OnDestroy {
 
     // constructor
     constructor(private _af:AngularFire, private _authService:AuthService,
-                private _ngZone:NgZone, private _router:Router) {
+                private _ngZone:NgZone) {
         // init vars
         this._authModel = {isAuthorized:this._authService.isUserAuthorized()};
 
@@ -36,11 +35,6 @@ export class Auth implements OnInit, OnDestroy {
                     this.processAuthChange(isAuthorized);
                 })
             });
-    }
-
-    // on-init
-    ngOnInit() {
-      this.navigate();
     }
 
     // on-destroy
@@ -61,24 +55,5 @@ export class Auth implements OnInit, OnDestroy {
     private processAuthChange(isAuthorized:boolean):void {
         // update model
         this._authModel.isAuthorized = isAuthorized;
-        // navigate
-        this.navigate();
-    }
-
-    // navigate based on auth
-    private navigate() {
-      // if user is authorized, navigate to dashboard
-      if (this._authModel.isAuthorized) {
-          // check if already on dashboard page
-          if (!this._router.isActive('dashboard', true)) {
-            this._router.navigate(['dashboard']);
-          }
-      } else {
-          // check if already on signin page
-          if (!this._router.isActive('', true)) {
-              // otherwise redirect to signin page
-              this._router.navigate(['']);
-          }
-      }
     }
 }
