@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { CORE_DIRECTIVES } from '@angular/common';
+
+
 import { AuthService } from '../auth/service/auth.service';
+import { FirebaseAuthService } from '../auth/service/firebaseauth.service';
 import { AuthModel } from "../auth/model/auth.model";
+import { FirebaseUser } from "../auth/model/firebaseuser.model";
 
 @Component({
     selector: 'dashboard',
@@ -12,16 +16,20 @@ import { AuthModel } from "../auth/model/auth.model";
 export class Dashboard {
 
     private _authModel:AuthModel;
+    private _fbUser:FirebaseUser;
 
     // constructor
-    constructor(private _authService:AuthService) {}
+    constructor(private _authService:AuthService,
+                private _fbAuthService:FirebaseAuthService) {}
 
     // on-init
     ngOnInit() {
         // init vars
         this._authModel = {isAuthorized:this._authService.isUserAuthorized()};
+        this._fbUser = new FirebaseUser();
 
         this._authService.emitter$.subscribe((isAuthorized) => {
+          this._fbUser = this._fbAuthService.getCurrentUser();
           this._authModel.isAuthorized = isAuthorized;
         });
     }

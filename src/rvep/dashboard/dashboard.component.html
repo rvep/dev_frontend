@@ -10,34 +10,42 @@
     </div>
   </nav>
 
-  <div class="sidebar full">
+  <div class="sidebar text-nowrap">
     <div class="container">
+      <div class="sidebar-user-info">
+        <div class="sidebar-user-picture">
+          <img [src]="_fbUser.picture">
+        </div>
+        <div class="sidebar-user-name">
+          <span>{{_fbUser.name}}</span>
+        </div>
+      </div>
       <ul class="nav nav-sidebar">
-          <li class="active sidebar-item text-nowrap">
+          <li class="active sidebar-item">
             <a href="#">
               <span class="fa fa-home sidebar-item-icon"></span>
               <span>Dashboard</span>
             </a>
           </li>
-          <li class="sidebar-item text-nowrap">
+          <li class="sidebar-item">
             <a href="#">
               <span class="fa fa-user sidebar-item-icon"></span>
               <span>Profile</span>
             </a>
           </li>
-          <li class="sidebar-item text-nowrap">
+          <li class="sidebar-item">
             <a href="#">
               <span class="fa fa-calendar sidebar-item-icon"></span>
               <span>Events</span>
             </a>
           </li>
-          <li class="sidebar-item text-nowrap">
+          <li class="sidebar-item">
             <a href="#">
               <span class="fa fa-calendar-plus-o sidebar-item-icon"></span>
               <span>Add Event</span>
             </a>
           </li>
-          <li class="signout sidebar-item text-nowrap" (click)="signOut()">
+          <li class="signout sidebar-item" (click)="signOut()">
             <a href="#">
               <span class="fa fa-sign-out sidebar-item-icon"></span>
               <span>Sign Out</span>

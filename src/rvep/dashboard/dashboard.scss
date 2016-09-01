@@ -59,6 +59,16 @@
   @include box-shadow(1px, 2px, 4px, rgba(0,0,0,.5));
 }
 
+.sidebar-user-info {
+  text-align: center;
+  border-bottom: 1px solid $color-teal;
+  margin-bottom: 2em;
+}
+
+.sidebar-user-picture img {
+  border-radius: 50%;
+}
+
 .sidebar li {
   list-style: none;
   cursor: pointer;
