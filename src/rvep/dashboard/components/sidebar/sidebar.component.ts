@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CORE_DIRECTIVES } from '@angular/common';
 
+import { AuthService } from '../../../auth/services/auth.service';
 import { FirebaseAuthService } from '../../../auth/services/firebaseauth.service';
 import { FirebaseUser } from '../../../auth/models/firebaseuser.model';
 
@@ -14,7 +15,8 @@ export class Sidebar {
   private _fbUser:FirebaseUser;
 
   // constructor
-  constructor(private _fbAuthService:FirebaseAuthService) {}
+  constructor(private _authService:AuthService,
+              private _fbAuthService:FirebaseAuthService) {}
 
   // on-init
   ngOnInit() {
@@ -25,5 +27,9 @@ export class Sidebar {
   // view init
   ngAfterViewInit() {
     this._fbUser = this._fbAuthService.getCurrentUser();
+  }
+
+  public signOut() {
+    this._authService.signOut();
   }
 }

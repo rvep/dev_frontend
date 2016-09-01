@@ -16,14 +16,13 @@ import { Sidebar } from './components/sidebar/sidebar.component';
     encapsulation: ViewEncapsulation.None,
     directives: [CORE_DIRECTIVES, Navbar, Sidebar]
 })
-export class Dashboard implements OnInit, AfterViewInit {
+export class Dashboard implements OnInit {
 
     private _authModel:AuthModel;
     private _fbUser:FirebaseUser;
 
     // constructor
-    constructor(private _authService:AuthService,
-                private _fbAuthService:FirebaseAuthService) {}
+    constructor(private _authService:AuthService) {}
 
     // on-init
     ngOnInit() {
@@ -31,15 +30,6 @@ export class Dashboard implements OnInit, AfterViewInit {
         this._authService.navigate();
         // init vars
         this._authModel = {isAuthorized:this._authService.isUserAuthorized()};
-        this._fbUser = new FirebaseUser();
     }
 
-    // view init
-    ngAfterViewInit() {
-      this._fbUser = this._fbAuthService.getCurrentUser();
-    }
-
-    public signOut() {
-      this._authService.signOut();
-    }
 }
