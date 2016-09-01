@@ -7,13 +7,14 @@ import { FirebaseAuthService } from '../auth/service/firebaseauth.service';
 import { AuthModel } from '../auth/model/auth.model';
 import { FirebaseUser } from '../auth/model/firebaseuser.model';
 import { Navbar } from './components/navbar/navbar.component';
+import { Sidebar } from './components/sidebar/sidebar.component';
 
 @Component({
     selector: 'dashboard',
     templateUrl: 'dashboard.component.html',
     styleUrls: ['dashboard.scss'],
     encapsulation: ViewEncapsulation.None,
-    directives: [CORE_DIRECTIVES, Navbar]
+    directives: [CORE_DIRECTIVES, Navbar, Sidebar]
 })
 export class Dashboard implements OnInit, AfterViewInit {
 
