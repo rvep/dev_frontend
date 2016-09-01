@@ -1,17 +1,19 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { CORE_DIRECTIVES } from '@angular/common';
 
 
 import { AuthService } from '../auth/service/auth.service';
 import { FirebaseAuthService } from '../auth/service/firebaseauth.service';
-import { AuthModel } from "../auth/model/auth.model";
-import { FirebaseUser } from "../auth/model/firebaseuser.model";
+import { AuthModel } from '../auth/model/auth.model';
+import { FirebaseUser } from '../auth/model/firebaseuser.model';
+import { Navbar } from './components/navbar/navbar.component';
 
 @Component({
     selector: 'dashboard',
     templateUrl: 'dashboard.component.html',
     styleUrls: ['dashboard.scss'],
-    directives: [CORE_DIRECTIVES]
+    encapsulation: ViewEncapsulation.None,
+    directives: [CORE_DIRECTIVES, Navbar]
 })
 export class Dashboard implements OnInit, AfterViewInit {
 
@@ -38,11 +40,5 @@ export class Dashboard implements OnInit, AfterViewInit {
 
     public signOut() {
       this._authService.signOut();
-    }
-
-    public toggleSideBar() {
-      jQuery('.sidebar')
-        .stop()
-        .animate({width: 'toggle'});
     }
 }
