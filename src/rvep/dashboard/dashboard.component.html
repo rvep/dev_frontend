@@ -6,6 +6,29 @@
 
   <div class="content">
     <div class="container-fluid">
+
+      <p [ngSwitch]="_content">
+        <template [ngSwitchCase]="'home'">
+          <home></home>
+        </template>
+
+        <template [ngSwitchCase]="'profile'">
+          <profile></profile>
+        </template>
+
+        <template [ngSwitchCase]="'events'">
+          <events></events>
+        </template>
+
+        <template [ngSwitchCase]="'addevent'">
+          <addevent></addevent>
+        </template>
+
+        <template ngSwitchDefault>
+          <home></home>
+        </template>
+      </p>
+
     </div>
   </div>
 </div>

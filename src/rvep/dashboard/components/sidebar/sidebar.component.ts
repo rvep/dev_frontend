@@ -4,6 +4,7 @@ import { CORE_DIRECTIVES } from '@angular/common';
 import { AuthService } from '../../../auth/services/auth.service';
 import { FirebaseAuthService } from '../../../auth/services/firebaseauth.service';
 import { FirebaseUser } from '../../../auth/models/firebaseuser.model';
+import { ContentSwap } from '../../services/contentswap.service';
 
 @Component({
   selector: 'sidebar',
@@ -16,7 +17,8 @@ export class Sidebar {
 
   // constructor
   constructor(private _authService:AuthService,
-              private _fbAuthService:FirebaseAuthService) {}
+              private _fbAuthService:FirebaseAuthService,
+              private _contentSwapService:ContentSwap) {}
 
   // on-init
   ngOnInit() {
@@ -29,7 +31,18 @@ export class Sidebar {
     this._fbUser = this._fbAuthService.getCurrentUser();
   }
 
-  public signOut() {
+  private signOut() {
     this._authService.signOut();
+  }
+
+  private contentSwap(content:String) {
+    this._contentSwapService.swap(content);
+    this.toggleSideBar();
+  }
+
+  private toggleSideBar() {
+    jQuery('.sidebar')
+      .stop()
+      .animate({width: 'toggle'});
   }
 }

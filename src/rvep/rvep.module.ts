@@ -12,6 +12,7 @@ import { Dashboard } from './dashboard/dashboard.component';
 import { AuthService } from './auth/services/auth.service';
 import { FirebaseAuthService } from './auth/services/firebaseauth.service';
 import { VerifyAuthService } from './auth/services/verifyauth.service';
+import { ContentSwap } from './dashboard/services/contentswap.service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDuRDCqn1ITVy_5gbg6ABnC2xxOR0I1grY",
@@ -36,7 +37,7 @@ export const firebaseAuthConfig = {
         rvepRouterProviders,
         provide(APP_BASE_HREF, {useValue: '/'}),
         provide(LocationStrategy, {useClass: HashLocationStrategy}),
-        AuthService, FirebaseAuthService, VerifyAuthService
+        AuthService, FirebaseAuthService, VerifyAuthService, ContentSwap
     ],
     bootstrap: [Rvep]
 })
