@@ -32,8 +32,18 @@
   float: left;
 }
 
-.sidebar-button {
- cursor: pointer;
- display: inline-block;
- color: $font-color;
+.sidebar-toggle {
+  cursor: pointer;
+  display: inline-block;
+  color: $font-color;
+}
+
+.sidebar-toggle:hover {
+  color: $color-teal;
+}
+
+.sidebar-toggle > span {
+  font-size: 1.2em;
+  margin-top: .1em;
+  padding-left: 1em;
 }

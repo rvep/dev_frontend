@@ -8,16 +8,6 @@
  *  styles
  ************/
 
-.sidebar-button:hover {
-  color: $color-teal;
-}
-
-.sidebar-button > span {
-  font-size: 1.2em;
-  margin-top: .1em;
-  padding-left: 1em;
-}
-
 .sidebar {
   display: none;
   z-index: 1000;
