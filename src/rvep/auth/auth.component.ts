@@ -2,9 +2,9 @@ import { Component, NgZone, OnDestroy } from '@angular/core';
 import { CORE_DIRECTIVES } from '@angular/common';
 import { AngularFire } from 'angularfire2';
 
-import { FirebaseAuthService } from './service/firebaseauth.service';
-import { AuthService } from './service/auth.service';
-import { AuthModel } from './model/auth.model';
+import { FirebaseAuthService } from './services/firebaseauth.service';
+import { AuthService } from './services/auth.service';
+import { AuthModel } from './models/auth.model';
 import { Observable } from 'rxjs/Observable';
 
 @Component({

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { FirebaseAuthService } from './firebaseauth.service';
 import { VerifyAuthService } from './verifyauth.service';
-import { AuthModel } from "../model/auth.model";
+import { AuthModel } from "../models/auth.model";
 
 @Injectable()
 export class AuthService {

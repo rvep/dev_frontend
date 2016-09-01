@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseAuthState } from 'angularfire2';
 
-import { FirebaseUser } from '../model/firebaseuser.model';
-import { FirebaseAuthModel } from '../model/firebaseauth.model';
+import { FirebaseUser } from '../models/firebaseuser.model';
+import { FirebaseAuthModel } from '../models/firebaseauth.model';
 import { VerifyAuthService } from './verifyauth.service';
 
 @Injectable()

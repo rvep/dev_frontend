@@ -2,10 +2,10 @@ import { Component, OnInit, AfterViewInit, ViewEncapsulation } from '@angular/co
 import { CORE_DIRECTIVES } from '@angular/common';
 
 
-import { AuthService } from '../auth/service/auth.service';
-import { FirebaseAuthService } from '../auth/service/firebaseauth.service';
-import { AuthModel } from '../auth/model/auth.model';
-import { FirebaseUser } from '../auth/model/firebaseuser.model';
+import { AuthService } from '../auth/services/auth.service';
+import { FirebaseAuthService } from '../auth/services/firebaseauth.service';
+import { AuthModel } from '../auth/models/auth.model';
+import { FirebaseUser } from '../auth/models/firebaseuser.model';
 import { Navbar } from './components/navbar/navbar.component';
 import { Sidebar } from './components/sidebar/sidebar.component';
 

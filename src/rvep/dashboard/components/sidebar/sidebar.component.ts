@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CORE_DIRECTIVES } from '@angular/common';
 
-import { FirebaseAuthService } from '../../../auth/service/firebaseauth.service';
-import { FirebaseUser } from '../../../auth/model/firebaseuser.model';
+import { FirebaseAuthService } from '../../../auth/services/firebaseauth.service';
+import { FirebaseUser } from '../../../auth/models/firebaseuser.model';
 
 @Component({
   selector: 'sidebar',

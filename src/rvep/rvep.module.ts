@@ -9,9 +9,9 @@ import { rvepRouterProviders } from './rvep.routes';
 import { Rvep } from './rvep.component';
 import { Signin } from './signin/signin.component';
 import { Dashboard } from './dashboard/dashboard.component';
-import { AuthService } from './auth/service/auth.service';
-import { FirebaseAuthService } from './auth/service/firebaseauth.service';
-import { VerifyAuthService } from './auth/service/verifyauth.service';
+import { AuthService } from './auth/services/auth.service';
+import { FirebaseAuthService } from './auth/services/firebaseauth.service';
+import { VerifyAuthService } from './auth/services/verifyauth.service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDuRDCqn1ITVy_5gbg6ABnC2xxOR0I1grY",

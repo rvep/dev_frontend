@@ -4,7 +4,7 @@ import { FirebaseAuthState } from 'angularfire2';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
-import {VerifyAuthModel} from '../model/verifyauth.model.ts';
+import {VerifyAuthModel} from '../models/verifyauth.model.ts';
 
 @Injectable()
 export class VerifyAuthService {
