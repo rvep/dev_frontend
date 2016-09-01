@@ -27,10 +27,6 @@ export class Dashboard implements OnInit, AfterViewInit {
         // init vars
         this._authModel = {isAuthorized:this._authService.isUserAuthorized()};
         this._fbUser = new FirebaseUser();
-
-        this._authService.emitter$.subscribe((isAuthorized) => {
-          this._authModel.isAuthorized = isAuthorized;
-        });
     }
 
     // view init
