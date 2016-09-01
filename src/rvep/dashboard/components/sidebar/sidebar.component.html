@@ -9,25 +9,25 @@
       </div>
     </div>
     <ul class="nav nav-sidebar">
-        <li class="active sidebar-item" (click)="contentSwap('home')">
+        <li id="home" class="active sidebar-item" (click)="contentSwap('home')">
           <a>
             <span class="fa fa-home sidebar-item-icon"></span>
             <span>Dashboard</span>
           </a>
         </li>
-        <li class="sidebar-item" (click)="contentSwap('profile')">
+        <li id="profile" class="sidebar-item" (click)="contentSwap('profile')">
           <a>
             <span class="fa fa-user sidebar-item-icon"></span>
             <span>Profile</span>
           </a>
         </li>
-        <li class="sidebar-item" (click)="contentSwap('events')">
+        <li id="events" class="sidebar-item" (click)="contentSwap('events')">
           <a>
             <span class="fa fa-calendar sidebar-item-icon"></span>
             <span>Events</span>
           </a>
         </li>
-        <li class="sidebar-item" (click)="contentSwap('addevent')">
+        <li id="addevent" class="sidebar-item" (click)="contentSwap('addevent')">
           <a>
             <span class="fa fa-calendar-plus-o sidebar-item-icon"></span>
             <span>Add Event</span>
