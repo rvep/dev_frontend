@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { CORE_DIRECTIVES } from '@angular/common';
 
-import { AuthService } from '../../../auth/services/auth.service';
-import { FirebaseAuthService } from '../../../auth/services/firebaseauth.service';
-import { FirebaseUser } from '../../../auth/models/firebaseuser.model';
+import { AuthService } from '../../../signin/components/auth/services/auth.service';
+import { FirebaseAuthService } from '../../../signin/components/auth/services/firebaseauth.service';
+import { FirebaseUser } from '../../../signin/components/auth/models/firebaseuser.model';
 import { ContentSwap } from '../../services/contentswap.service';
 
 @Component({

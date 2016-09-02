@@ -1,10 +1,10 @@
 import { Component, OnInit, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { CORE_DIRECTIVES } from '@angular/common';
 
-import { AuthService } from '../auth/services/auth.service';
-import { FirebaseAuthService } from '../auth/services/firebaseauth.service';
+import { AuthService } from '../signin/components/auth/services/auth.service';
+import { FirebaseAuthService } from '../signin/components/auth/services/firebaseauth.service';
 import { ContentSwap } from './services/contentswap.service';
-import { AuthModel } from '../auth/models/auth.model';
+import { AuthModel } from '../signin/components/auth/models/auth.model';
 
 @Component({
     selector: 'dashboard',

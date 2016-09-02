@@ -9,16 +9,16 @@ import { rvepRouterProviders } from './rvep.routes';
 import { Rvep } from './rvep.component';
 import { Signin } from './signin/signin.component';
 import { Dashboard } from './dashboard/dashboard.component';
-import { Auth } from './auth/auth.component';
+import { Auth } from './signin/components/auth/auth.component';
 import { Home } from './dashboard/components/home/home.component';
 import { Profile } from './dashboard/components/profile/profile.component';
 import { Navbar } from './dashboard/components/navbar/navbar.component';
 import { Sidebar } from './dashboard/components/sidebar/sidebar.component';
 import { Events } from './dashboard/components/events/events.component';
 import { AddEvent } from './dashboard/components/addevent/addevent.component';
-import { AuthService } from './auth/services/auth.service';
-import { FirebaseAuthService } from './auth/services/firebaseauth.service';
-import { VerifyAuthService } from './auth/services/verifyauth.service';
+import { AuthService } from './signin/components/auth/services/auth.service';
+import { FirebaseAuthService } from './signin/components/auth/services/firebaseauth.service';
+import { VerifyAuthService } from './signin/components/auth/services/verifyauth.service';
 import { ContentSwap } from './dashboard/services/contentswap.service';
 
 export const firebaseConfig = {
