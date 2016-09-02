@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 import { AuthService } from '../../../signin/components/auth/services/auth.service';
 import { FirebaseAuthService } from '../../../signin/components/auth/services/firebaseauth.service';
@@ -10,7 +10,7 @@ import { ContentSwap } from '../../services/contentswap.service';
   templateUrl: 'sidebar.component.html',
   styleUrls: ['sidebar.scss']
 })
-export class Sidebar {
+export class Sidebar implements OnInit, AfterViewInit {
   private _fbUser:FirebaseUser;
 
   // constructor
