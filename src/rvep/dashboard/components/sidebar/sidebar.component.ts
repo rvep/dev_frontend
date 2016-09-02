@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CORE_DIRECTIVES } from '@angular/common';
 
 import { AuthService } from '../../../signin/components/auth/services/auth.service';
 import { FirebaseAuthService } from '../../../signin/components/auth/services/firebaseauth.service';
@@ -9,8 +8,7 @@ import { ContentSwap } from '../../services/contentswap.service';
 @Component({
   selector: 'sidebar',
   templateUrl: 'sidebar.component.html',
-  styleUrls: ['sidebar.scss'],
-  directives: [CORE_DIRECTIVES]
+  styleUrls: ['sidebar.scss']
 })
 export class Sidebar {
   private _fbUser:FirebaseUser;

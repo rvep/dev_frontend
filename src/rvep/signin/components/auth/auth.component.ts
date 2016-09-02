@@ -1,5 +1,4 @@
 import { Component, NgZone, OnDestroy } from '@angular/core';
-import { CORE_DIRECTIVES } from '@angular/common';
 import { AngularFire } from 'angularfire2';
 
 import { FirebaseAuthService } from './services/firebaseauth.service';
@@ -11,8 +10,7 @@ import { Observable } from 'rxjs/Observable';
     selector: 'auth',
     inputs: ['_authModel'],
     templateUrl: 'auth.component.html',
-    styleUrls: ['auth.scss'],
-    directives: [CORE_DIRECTIVES]
+    styleUrls: ['auth.scss']
 })
 export class Auth implements OnDestroy {
 

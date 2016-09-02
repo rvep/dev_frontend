@@ -1,11 +1,11 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA, provide } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy, APP_BASE_HREF } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_PROVIDERS } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule, AuthMethods, AuthProviders, FIREBASE_PROVIDERS } from 'angularfire2';
 
-import { rvepRouterProviders } from './rvep.routes';
+import { rvepRouterProviders, routing } from './rvep.routing';
 import { Rvep } from './rvep.component';
 import { Signin } from './signin/signin.component';
 import { Dashboard } from './dashboard/dashboard.component';
@@ -34,17 +34,20 @@ export const firebaseAuthConfig = {
 }
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, ReactiveFormsModule,
-              AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)],
     declarations: [Rvep, Signin, Dashboard, Navbar, Sidebar,
                    Home, Profile, Events, AddEvent, Auth],
+    imports: [BrowserModule,
+              FormsModule,
+              ReactiveFormsModule,
+              HttpModule,
+              AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
+              routing],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [
         FIREBASE_PROVIDERS,
-        HTTP_PROVIDERS,
         rvepRouterProviders,
-        provide(APP_BASE_HREF, {useValue: '/'}),
-        provide(LocationStrategy, {useClass: HashLocationStrategy}),
+        [{provide: APP_BASE_HREF, useValue: '/'}],
+        [{provide: LocationStrategy, useClass: HashLocationStrategy}],
         AuthService, FirebaseAuthService, VerifyAuthService, ContentSwap
     ],
     bootstrap: [Rvep]

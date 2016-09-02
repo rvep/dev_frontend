@@ -1,8 +1,6 @@
-import { Component, OnInit, AfterViewInit, ViewEncapsulation } from '@angular/core';
-import { CORE_DIRECTIVES } from '@angular/common';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { AuthService } from '../signin/components/auth/services/auth.service';
-import { FirebaseAuthService } from '../signin/components/auth/services/firebaseauth.service';
 import { ContentSwap } from './services/contentswap.service';
 import { AuthModel } from '../signin/components/auth/models/auth.model';
 
@@ -10,8 +8,7 @@ import { AuthModel } from '../signin/components/auth/models/auth.model';
     selector: 'dashboard',
     templateUrl: 'dashboard.component.html',
     styleUrls: ['dashboard.scss'],
-    encapsulation: ViewEncapsulation.None,
-    directives: [CORE_DIRECTIVES]
+    encapsulation: ViewEncapsulation.None
 })
 export class Dashboard implements OnInit {
 
