@@ -5,7 +5,6 @@ import { AuthService } from '../auth/services/auth.service';
 import { FirebaseAuthService } from '../auth/services/firebaseauth.service';
 import { ContentSwap } from './services/contentswap.service';
 import { AuthModel } from '../auth/models/auth.model';
-import { FirebaseUser } from '../auth/models/firebaseuser.model';
 
 @Component({
     selector: 'dashboard',
@@ -17,7 +16,6 @@ import { FirebaseUser } from '../auth/models/firebaseuser.model';
 export class Dashboard implements OnInit {
 
     private _authModel:AuthModel;
-    private _fbUser:FirebaseUser;
     private _content:String;
 
     // constructor
