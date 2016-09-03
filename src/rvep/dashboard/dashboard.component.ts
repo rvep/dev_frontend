@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
-import { AuthService } from '../signin/components/auth/services/auth.service';
+import { AuthService } from '../signin/shared/services/auth.service';
 import { ContentSwap } from './shared/services/contentswap.service';
-import { AuthModel } from '../signin/components/auth/models/auth.model';
+import { AuthModel } from '../signin/shared/models/auth.model';
 
 @Component({
     selector: 'dashboard',

@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 
-import { AuthService } from '../../../signin/components/auth/services/auth.service';
-import { FirebaseAuthService } from '../../../signin/components/auth/services/firebaseauth.service';
-import { FirebaseUser } from '../../../signin/components/auth/models/firebaseuser.model';
+import { AuthService } from '../../../signin/shared/services/auth.service';
+import { FirebaseAuthService } from '../../../signin/shared/services/firebaseauth.service';
+import { FirebaseUser } from '../../../signin/shared/models/firebaseuser.model';
 import { ContentSwap } from '../../shared/services/contentswap.service';
 
 @Component({

@@ -16,9 +16,9 @@ import { Navbar } from './dashboard/components/navbar/navbar.component';
 import { Sidebar } from './dashboard/components/sidebar/sidebar.component';
 import { Events } from './dashboard/components/events/events.component';
 import { AddEvent } from './dashboard/components/addevent/addevent.component';
-import { AuthService } from './signin/components/auth/services/auth.service';
-import { FirebaseAuthService } from './signin/components/auth/services/firebaseauth.service';
-import { VerifyAuthService } from './signin/components/auth/services/verifyauth.service';
+import { AuthService } from './signin/shared/services/auth.service';
+import { FirebaseAuthService } from './signin/shared/services/firebaseauth.service';
+import { VerifyAuthService } from './signin/shared/services/verifyauth.service';
 import { ContentSwap } from './dashboard/shared/services/contentswap.service';
 
 export const firebaseConfig = {
