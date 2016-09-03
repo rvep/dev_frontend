@@ -19,7 +19,7 @@ import { AddEvent } from './dashboard/components/addevent/addevent.component';
 import { AuthService } from './signin/components/auth/services/auth.service';
 import { FirebaseAuthService } from './signin/components/auth/services/firebaseauth.service';
 import { VerifyAuthService } from './signin/components/auth/services/verifyauth.service';
-import { ContentSwap } from './dashboard/services/contentswap.service';
+import { ContentSwap } from './dashboard/shared/services/contentswap.service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDuRDCqn1ITVy_5gbg6ABnC2xxOR0I1grY",

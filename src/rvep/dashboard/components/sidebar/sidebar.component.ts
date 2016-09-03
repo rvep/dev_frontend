@@ -3,7 +3,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { AuthService } from '../../../signin/components/auth/services/auth.service';
 import { FirebaseAuthService } from '../../../signin/components/auth/services/firebaseauth.service';
 import { FirebaseUser } from '../../../signin/components/auth/models/firebaseuser.model';
-import { ContentSwap } from '../../services/contentswap.service';
+import { ContentSwap } from '../../shared/services/contentswap.service';
 
 @Component({
   selector: 'sidebar',
