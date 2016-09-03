@@ -4,7 +4,7 @@ import { FirebaseAuthState } from 'angularfire2';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
-import {VerifyAuthModel} from '../models/verifyauth.model.ts';
+import { VerifyAuthModel } from '../models';
 
 @Injectable()
 export class VerifyAuthService {
@@ -25,7 +25,7 @@ export class VerifyAuthService {
     }
 
     // verify
-    public async verify(authState:FirebaseAuthState) {//GoogleUser) {
+    public async verify(authState: FirebaseAuthState) {//GoogleUser) {
         // init request params
         var tokenId:string = "";
         await authState.auth.getToken(true).then(token => {tokenId = token});

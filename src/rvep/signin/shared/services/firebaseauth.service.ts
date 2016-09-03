@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseAuthState } from 'angularfire2';
 
-import { FirebaseUser } from '../models/firebaseuser.model';
-import { FirebaseAuthModel } from '../models/firebaseauth.model';
+import { FirebaseUser, FirebaseAuthModel } from '../models';
 import { VerifyAuthService } from './verifyauth.service';
 
 @Injectable()
@@ -20,7 +19,7 @@ export class FirebaseAuthService {
         this._fbUser = new FirebaseUser();
 
         // subscribe to firebase auth
-        this._af.auth.subscribe((auth) => {
+        this._af.auth.subscribe((auth: FirebaseAuthState) => {
           if(auth && this._authFlag) {
             // TODO:
             // this is a temporary fix for subscribe

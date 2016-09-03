@@ -7,19 +7,12 @@ import { AngularFireModule, AuthMethods, AuthProviders, FIREBASE_PROVIDERS } fro
 
 import { rvepRouterProviders, routing } from './rvep.routing';
 import { Rvep } from './rvep.component';
-import { Signin } from './signin/signin.component';
-import { Dashboard } from './dashboard/dashboard.component';
-import { Auth } from './signin/components/auth/auth.component';
-import { Home } from './dashboard/components/home/home.component';
-import { Profile } from './dashboard/components/profile/profile.component';
-import { Navbar } from './dashboard/components/navbar/navbar.component';
-import { Sidebar } from './dashboard/components/sidebar/sidebar.component';
-import { Events } from './dashboard/components/events/events.component';
-import { AddEvent } from './dashboard/components/addevent/addevent.component';
-import { AuthService } from './signin/shared/services/auth.service';
-import { FirebaseAuthService } from './signin/shared/services/firebaseauth.service';
-import { VerifyAuthService } from './signin/shared/services/verifyauth.service';
-import { ContentSwap } from './dashboard/shared/services/contentswap.service';
+import { Signin } from './signin';
+import { Dashboard } from './dashboard';
+import { Auth } from './signin/components';
+import { Home, Profile, Events, AddEvent, Navbar, Sidebar } from './dashboard/components';
+import { AuthService, FirebaseAuthService, VerifyAuthService } from './signin/shared';
+import { ContentSwap } from './dashboard/shared';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDuRDCqn1ITVy_5gbg6ABnC2xxOR0I1grY",

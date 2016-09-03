@@ -1,10 +1,7 @@
 import { Component, NgZone, OnDestroy } from '@angular/core';
 import { AngularFire } from 'angularfire2';
 
-import { FirebaseAuthService } from '../../shared/services/firebaseauth.service';
-import { AuthService } from '../../shared/services/auth.service';
-import { AuthModel } from '../../shared/models/auth.model';
-import { Observable } from 'rxjs/Observable';
+import { AuthService, AuthModel } from '../../shared';
 
 @Component({
     selector: 'auth',
