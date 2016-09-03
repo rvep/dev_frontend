@@ -10,9 +10,7 @@
       "lib": ["es6", "dom"],
       "strictNullChecks": false,
       "baseUrl": "./src",
-      "paths": {
-        "src/rvep/shared/*": ["shared/sass/*"]
-      },
+      "paths": [],
       "types": [
         "jasmine",
         "lodash",
