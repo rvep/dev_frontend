@@ -1,30 +1,27 @@
 import { Injectable, EventEmitter } from '@angular/core';
 
+import { SidebarActivity } from './sidebaractivity.service';
+
 @Injectable()
 export class ContentSwap {
 
   public emitter$:EventEmitter<String>;
-  constructor() {
+
+  constructor(private _sidebarActivityService:SidebarActivity) {
     this.emitter$ = new EventEmitter<String>();
   }
 
-  public toggleSideBar() {
-    jQuery('.sidebar')
-      .stop()
-      .animate({width: 'toggle'});
-  }
-
   public swap(content:String) {
+    // set active menu item
+    this._sidebarActivityService.setActive(content);
+    // toggle sidebar if it's displayed
+    if (jQuery('.sidebar').css('display') == 'block') {
+      this._sidebarActivityService.toggleSideBar();
+    }
+    // push new state
     this.pushState(content);
-  }
 
-  public setActive(content:String) {
-    // find li item with active class
-    // remove active class
-    jQuery('li.active').removeClass('active');
-    jQuery('#' + content).addClass('active');
   }
-
   private pushState(content:String) {
     this.emitter$.emit(content);
   }

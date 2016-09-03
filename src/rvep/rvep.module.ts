@@ -10,7 +10,7 @@ import { Rvep } from './rvep.component';
 import { Signin, Auth, AuthService, FirebaseAuthService,
          VerifyAuthService } from './signin';
 import { Dashboard, Home, Profile, Events, AddEvent,
-         Navbar, Sidebar, ContentSwap } from './dashboard';
+         Navbar, Sidebar, ContentSwap, SidebarActivity } from './dashboard';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDuRDCqn1ITVy_5gbg6ABnC2xxOR0I1grY",
@@ -39,7 +39,8 @@ export const firebaseAuthConfig = {
         rvepRouterProviders,
         [{provide: APP_BASE_HREF, useValue: '/'}],
         [{provide: LocationStrategy, useClass: HashLocationStrategy}],
-        AuthService, FirebaseAuthService, VerifyAuthService, ContentSwap
+        AuthService, FirebaseAuthService, VerifyAuthService,
+        ContentSwap, SidebarActivity
     ],
     bootstrap: [Rvep]
 })

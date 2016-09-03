@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ContentSwap } from '../../shared';
+import { ContentSwap, SidebarActivity } from '../../shared';
 
 @Component({
   selector: 'navbar',
@@ -9,21 +9,16 @@ import { ContentSwap } from '../../shared';
 })
 export class Navbar {
 
-  constructor (private _contentSwapService:ContentSwap) {}
+  constructor (private _contentSwapService:ContentSwap,
+               private _sidebarActivityService:SidebarActivity) {}
 
   private contentSwap(content:String) {
-    // set active menu item
-    this._contentSwapService.setActive(content);
     // swap content
     this._contentSwapService.swap(content);
-    // don't toggle sidebar if it's already off
-    if (jQuery('.sidebar').css('display') == 'block') {
-      this.toggleSideBar();
-    }
   }
 
   private toggleSideBar() {
-    this._contentSwapService.toggleSideBar();
+    this._sidebarActivityService.toggleSideBar();
   }
 
 }
