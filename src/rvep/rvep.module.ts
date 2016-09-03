@@ -7,12 +7,10 @@ import { AngularFireModule, AuthMethods, AuthProviders, FIREBASE_PROVIDERS } fro
 
 import { rvepRouterProviders, routing } from './rvep.routing';
 import { Rvep } from './rvep.component';
-import { Signin } from './signin';
-import { Dashboard } from './dashboard';
-import { Auth } from './signin/components';
-import { Home, Profile, Events, AddEvent, Navbar, Sidebar } from './dashboard/components';
-import { AuthService, FirebaseAuthService, VerifyAuthService } from './signin/shared';
-import { ContentSwap } from './dashboard/shared';
+import { Signin, Auth, AuthService, FirebaseAuthService,
+         VerifyAuthService } from './signin';
+import { Dashboard, Home, Profile, Events, AddEvent,
+         Navbar, Sidebar, ContentSwap } from './dashboard';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDuRDCqn1ITVy_5gbg6ABnC2xxOR0I1grY",

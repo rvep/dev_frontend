@@ -1,7 +1,7 @@
 import { Component, NgZone, OnDestroy } from '@angular/core';
 import { AngularFire } from 'angularfire2';
 
-import { AuthService, AuthModel } from '../../shared';
+import { AuthService, AuthModel } from '../../';
 
 @Component({
     selector: 'auth',

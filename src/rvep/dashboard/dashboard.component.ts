@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
-import { AuthService, AuthModel } from '../signin/shared';
+import { AuthService, AuthModel } from '../signin';
 import { ContentSwap } from './shared';
 
 @Component({
