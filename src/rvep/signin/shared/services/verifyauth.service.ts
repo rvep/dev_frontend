@@ -27,11 +27,11 @@ export class VerifyAuthService {
     // verify
     public async verify(authState: FirebaseAuthState) {//GoogleUser) {
         // init request params
-        var tokenId:string = "";
-        await authState.auth.getToken(true).then(token => {tokenId = token});
+        var idToken:string = "";
+        await authState.auth.getToken(true).then(token => {idToken = token});
         var headers = new Headers({'Content-Type': 'application/json'});
-        var body = JSON.stringify({'tokenId': tokenId});
-        var url = 'http://localhost:8080/api/firebase/auth/verify';
+        var body = JSON.stringify({'idToken': idToken});
+        var url = 'http://localhost:8080/api/auth/firebase/verify';
         // first http post request
         this._http.post(url, body, {headers: headers})
         // map response to json
