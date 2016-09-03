@@ -28,10 +28,10 @@ export class FirebaseAuthService {
             this._authFlag = false;
 
             // set fb user
-            this._fbUser.uid = auth.google.uid;
-            this._fbUser.email = auth.google.email;
-            this._fbUser.name = auth.google.displayName;
-            this._fbUser.picture = auth.google.photoURL;
+            this._fbUser.uid = auth.auth.uid;
+            this._fbUser.email = auth.auth.displayName;
+            this._fbUser.name = auth.auth.email;
+            this._fbUser.picture = auth.auth.photoURL;
 
             console.log('user signed in');
             console.log('name: ' + this._fbUser.name);
