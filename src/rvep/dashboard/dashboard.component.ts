@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { AuthService, AuthModel } from '../signin';
-import { ContentSwap } from './shared';
+import { ContentSwap, SidebarActivity } from './shared';
 
 @Component({
     selector: 'dashboard',
@@ -16,7 +16,8 @@ export class Dashboard implements OnInit {
 
     // constructor
     constructor(private _authService:AuthService,
-                private _contentSwapService:ContentSwap) {}
+                private _contentSwapService:ContentSwap,
+                private _sidebarActivityService:SidebarActivity) {}
 
     // on-init
     ngOnInit() {
@@ -28,7 +29,18 @@ export class Dashboard implements OnInit {
 
         // subscribe to content swap
         this._contentSwapService.emitter$.subscribe((content) => {
+          // set new content state
           this._content = content;
+
+          // only swap for changes
+          if (this._sidebarActivityService.getActive() != content) {
+            // set active menu item
+            this._sidebarActivityService.setActive(content);
+            // toggle sidebar if it's displayed
+            if (jQuery('.sidebar').css('display') == 'block') {
+              this._sidebarActivityService.toggleSideBar();
+            }
+          }
         });
     }
 
