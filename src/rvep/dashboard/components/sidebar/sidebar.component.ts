@@ -33,22 +33,9 @@ export class Sidebar implements OnInit, AfterViewInit {
 
   private contentSwap(content:String) {
     // set active menu item
-    this.setActive(content);
+    this._contentSwapService.setActive(content);
     // swap content
     this._contentSwapService.swap(content);
-    this.toggleSideBar();
-  }
-
-  private setActive(content:String) {
-    // find li item with active class
-    // remove active class
-    jQuery('li.active').removeClass('active');
-    jQuery('#' + content).addClass('active');
-  }
-
-  private toggleSideBar() {
-    jQuery('.sidebar')
-      .stop()
-      .animate({width: 'toggle'});
+    this._contentSwapService.toggleSideBar();
   }
 }
