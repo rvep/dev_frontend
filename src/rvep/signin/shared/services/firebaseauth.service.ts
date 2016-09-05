@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseAuthState } from 'angularfire2';
+import { Logger } from 'angular2-logger/core';
 
 import { FirebaseUser, FirebaseAuthModel } from '../models';
 import { VerifyAuthService } from './verifyauth.service';
@@ -13,7 +14,8 @@ export class FirebaseAuthService {
 
     // constructor
     constructor(private _verifyAuthService: VerifyAuthService,
-                private _af: AngularFire) {
+                private _af: AngularFire,
+                private _logger:Logger) {
         // init vars
         this._fbAuthModel = new FirebaseAuthModel();
         this._fbUser = new FirebaseUser();
@@ -32,8 +34,8 @@ export class FirebaseAuthService {
             this._fbUser.name = auth.auth.email;
             this._fbUser.picture = auth.auth.photoURL;
 
-            console.log('user signed in');
-            console.log('name: ' + this._fbUser.name);
+            this._logger.info('user signed in');
+            this._logger.info('name: ' + this._fbUser.name);
 
             // set auth state
             this._fbAuthModel.isSignedIn = true;
@@ -41,7 +43,7 @@ export class FirebaseAuthService {
             this._verifyAuthService.verify(auth);
           } else if(auth == null && !this._authFlag) {
             this._authFlag = true;
-            console.log('user signed out');
+            this._logger.info('user signed out');
             this._fbAuthModel.isSignedIn = false;
           }
         });

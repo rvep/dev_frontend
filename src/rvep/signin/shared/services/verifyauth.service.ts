@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { FirebaseAuthState } from 'angularfire2';
+import { Logger } from 'angular2-logger/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
@@ -13,7 +14,8 @@ export class VerifyAuthService {
     private _verifyAuthModel:VerifyAuthModel;
 
     // constructor
-    constructor(private _http:Http) {
+    constructor(private _http:Http,
+                private _logger:Logger) {
         // init vars
         this.emitter$ = new EventEmitter<boolean>();
         this._verifyAuthModel = new VerifyAuthModel();
@@ -37,16 +39,16 @@ export class VerifyAuthService {
         // map response to json
             .map((res:Response) => res.json())
             // log
-            .do((data) => console.log(data))
+            .do((data) => this._logger.info(data))
             // process response
             .subscribe(
                 (authVerification) => {
-                    console.log('is user verified? ' + authVerification.isVerified);
+                    this._logger.info('is user verified? ' + authVerification.isVerified);
                     this._verifyAuthModel.isVerified = authVerification.isVerified;
                     this.pushState();
                 },
-                (err) => console.log(err),
-                () => console.log('auth verification complete')
+                (err) => this._logger.error(err),
+                () => this._logger.info('auth verification complete')
             );
     }
 

@@ -1,5 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { Logger } from 'angular2-logger/core';
 
 import { FirebaseAuthService } from './firebaseauth.service';
 import { VerifyAuthService } from './verifyauth.service';
@@ -15,7 +16,8 @@ export class AuthService {
     // constructor
     constructor(private _fbAuthService:FirebaseAuthService,
                 private _verifyAuthService:VerifyAuthService,
-                private _router:Router) {
+                private _router:Router,
+                private _logger:Logger) {
         // init vars
         this.emitter$ = new EventEmitter<boolean>();
         this._authModel = new AuthModel();
@@ -23,7 +25,7 @@ export class AuthService {
         // subscribe to auth verification emitter
         this._verifyAuthService.emitter$.subscribe((isVerified) => {
             // log
-            console.log('verification state received: ' + isVerified);
+            this._logger.info('verification state received: ' + isVerified);
 
             // auth check and push state
             this._authModel.isAuthorized = this.authCheck(isVerified);

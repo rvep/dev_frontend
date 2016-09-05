@@ -6,15 +6,13 @@ import '@angular/common';
 import '@angular/forms';
 import '@angular/http';
 import '@angular/router';
-
-// rxjs
 import 'rxjs';
-
 import 'firebase';
 import 'angularfire2';
 import 'jquery';
 import 'font-awesome-sass-loader';
 import 'lodash';
+import 'angular2-logger';
 
 if (ENV === 'production') {
   // prod

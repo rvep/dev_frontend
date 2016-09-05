@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule, AuthMethods, AuthProviders, FIREBASE_PROVIDERS } from 'angularfire2';
+import { Logger, Options, Level } from 'angular2-logger/core';
 
 import { rvepRouterProviders, routing } from './rvep.routing';
 import { Rvep } from './rvep.component';
@@ -39,6 +40,8 @@ export const firebaseAuthConfig = {
         rvepRouterProviders,
         [{provide: APP_BASE_HREF, useValue: '/'}],
         [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+        [{provide: Options, useValue: { level: Level.INFO }}],
+        Logger,
         AuthService, FirebaseAuthService, VerifyAuthService,
         ContentSwap, SidebarActivity
     ],

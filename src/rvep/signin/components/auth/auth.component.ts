@@ -1,5 +1,6 @@
 import { Component, NgZone, OnDestroy } from '@angular/core';
 import { AngularFire } from 'angularfire2';
+import { Logger } from 'angular2-logger/core';
 
 import { AuthService, AuthModel } from '../../';
 
@@ -16,8 +17,10 @@ export class Auth implements OnDestroy {
     private _authSubscription;
 
     // constructor
-    constructor(private _af:AngularFire, private _authService:AuthService,
-                private _ngZone:NgZone) {
+    constructor(private _af:AngularFire,
+                private _authService:AuthService,
+                private _ngZone:NgZone,
+                private _logger:Logger) {
         // init vars
         this._authModel = {isAuthorized:this._authService.isUserAuthorized()};
 
@@ -26,7 +29,7 @@ export class Auth implements OnDestroy {
             .subscribe((isAuthorized) => {
                 this._ngZone.run(() => {
                     // log
-                    console.log('auth state received: ' + isAuthorized);
+                    this._logger.info('auth state received: ' + isAuthorized);
                     this.processAuthChange(isAuthorized);
                 })
             });
