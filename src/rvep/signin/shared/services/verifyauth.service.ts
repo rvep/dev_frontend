@@ -27,7 +27,7 @@ export class VerifyAuthService {
     }
 
     // verify
-    public async verify(authState: FirebaseAuthState) {//GoogleUser) {
+    public async verify(authState: FirebaseAuthState) {
         // init request params
         var idToken:string = "";
         await authState.auth.getToken(true).then(token => {idToken = token});
