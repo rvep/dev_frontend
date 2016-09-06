@@ -30,9 +30,10 @@ export class FirebaseAuthService {
 
             // set fb user
             this._fbUser.uid = auth.auth.uid;
-            this._fbUser.email = auth.auth.displayName;
-            this._fbUser.name = auth.auth.email;
+            this._fbUser.email = auth.auth.email;
+            this._fbUser.name = auth.auth.displayName;
             this._fbUser.picture = auth.auth.photoURL;
+            this._fbUser.provider = auth.auth.providerData[0].providerId;
 
             this._logger.info('user signed in');
             this._logger.info('name: ' + this._fbUser.name);

@@ -3,4 +3,5 @@ export class FirebaseUser {
   public email:String;
   public name:String;
   public picture:String;
+  public provider:String;
 }

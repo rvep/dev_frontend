@@ -34,10 +34,16 @@ export class AuthService {
             this.pushState();
 
             if (isVerified) {
+              // get vars
+              var email = this._fbAuthService.getCurrentUser().email;
+              var provider = this._fbAuthService.getCurrentUser().provider;
               // check if user is registered
-              if (!this._registerUserService.isUserRegistered(this._fbAuthService.getCurrentUser().email)) {
-                // register user
-              }
+              this._registerUserService.isUserRegistered(email)
+                .then((registeredCheck) => {
+                  if (!registeredCheck.isRegistered) {
+                    this._registerUserService.registerUser(email, provider);
+                  }
+                });
               // navigate
               this.navigate();
             }
