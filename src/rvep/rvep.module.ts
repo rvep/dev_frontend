@@ -9,7 +9,7 @@ import { Logger, Options, Level } from 'angular2-logger/core';
 import { rvepRouterProviders, routing } from './rvep.routing';
 import { Rvep } from './rvep.component';
 import { Signin, Auth, AuthService, FirebaseAuthService,
-         VerifyAuthService } from './signin';
+         VerifyAuthService, RegisterUserService } from './signin';
 import { Dashboard, Home, Profile, Events, AddEvent,
          Navbar, Sidebar, ContentSwap, SidebarActivity } from './dashboard';
 
@@ -43,7 +43,7 @@ export const firebaseAuthConfig = {
         [{provide: Options, useValue: { level: Level.INFO }}],
         Logger,
         AuthService, FirebaseAuthService, VerifyAuthService,
-        ContentSwap, SidebarActivity
+        ContentSwap, SidebarActivity, RegisterUserService
     ],
     bootstrap: [Rvep]
 })

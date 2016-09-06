@@ -4,7 +4,8 @@ import { Logger } from 'angular2-logger/core';
 
 import { FirebaseAuthService } from './firebaseauth.service';
 import { VerifyAuthService } from './verifyauth.service';
-import { AuthModel } from "../models/auth.model";
+import { RegisterUserService } from './registeruser.service';
+import { AuthModel } from "../models";
 
 @Injectable()
 export class AuthService {
@@ -16,6 +17,7 @@ export class AuthService {
     // constructor
     constructor(private _fbAuthService:FirebaseAuthService,
                 private _verifyAuthService:VerifyAuthService,
+                private _registerUserService:RegisterUserService,
                 private _router:Router,
                 private _logger:Logger) {
         // init vars
@@ -32,6 +34,10 @@ export class AuthService {
             this.pushState();
 
             if (isVerified) {
+              // check if user is registered
+              if (!this._registerUserService.isUserRegistered(this._fbAuthService.getCurrentUser().email)) {
+                // register user
+              }
               // navigate
               this.navigate();
             }
