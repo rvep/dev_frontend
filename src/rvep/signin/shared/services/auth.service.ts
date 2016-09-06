@@ -33,7 +33,7 @@ export class AuthService {
             this._authModel.isAuthorized = this.authCheck(isVerified);
             this.pushState();
 
-            if (isVerified) {
+            if (this._authModel.isAuthorized) {
               // get vars
               var email = this._fbAuthService.getCurrentUser().email;
               var provider = this._fbAuthService.getCurrentUser().provider;
