@@ -3,7 +3,6 @@ import { Http, Headers, Response } from '@angular/http';
 import { Logger } from 'angular2-logger/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
-import {Observable} from "rxjs";
 
 @Injectable()
 export class RegisterUserService {
