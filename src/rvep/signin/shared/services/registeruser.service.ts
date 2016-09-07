@@ -37,7 +37,6 @@ export class RegisterUserService {
     return await this._http.post(url, body, {headers: headers})
       .map((res:Response) => (res.json()))
       .do((data:RegisterUserModel) => {
-        console.log(data);
         this._logger.info("registered user? " + data.userRegistered);
         this._isUserRegistered.isRegistered = data.userRegistered;
       })
