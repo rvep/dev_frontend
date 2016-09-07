@@ -20,51 +20,38 @@ export class AuthService {
                 private _registerUserService:RegisterUserService,
                 private _router:Router,
                 private _logger:Logger) {
-        // init vars
-        this.emitter$ = new EventEmitter<boolean>();
-        this._authModel = new AuthModel();
+      // init vars
+      this.emitter$ = new EventEmitter<boolean>();
+      this._authModel = new AuthModel();
 
-        // subscribe to auth verification emitter
-        this._verifyAuthService.emitter$.subscribe((isVerified) => {
-            // log
-            this._logger.info('verification state received: ' + isVerified);
+      // subscribe to auth verification emitter
+      this.verificationStateSubscribe();
+    }
 
-          // get vars
-          var email = this._fbAuthService.getCurrentUser().email;
-          var provider = this._fbAuthService.getCurrentUser().provider;
-          // check if user is registered
-          this._registerUserService.isUserRegisteredCheck(email)
-            .then((isUserRegistered:IsUserRegisteredModel) => {
-              // if user is not registered, register the user
-              if (!isUserRegistered.isRegistered) {
-                this._registerUserService.registerUser(email, provider)
-                  .then((registeredUser:RegisterUserModel) => {
-                    // if the user is successfully registered
-                    // proceed with authorization
-                    if (registeredUser.userRegistered) {
-                      // auth check and push state
-                      this._authModel.isAuthorized = this.authCheck();
-                      this.pushState();
+    private registerUser() {
+      // get vars
+      var email = this._fbAuthService.getCurrentUser().email;
+      var provider = this._fbAuthService.getCurrentUser().provider;
 
-                      if (this.isUserAuthorized()) {
-                        // navigate
-                        this.navigate();
-                      }
-                    }
-                  });
-              } else {
-                // user is already registered, proceed with authorization
-                // auth check and push state
-                this._authModel.isAuthorized = this.authCheck();
-                this.pushState();
+        this._registerUserService.registerUser(email, provider)
+          .then((registeredUser:RegisterUserModel) => {
+            // if the user is successfully registered
+            // proceed with authorization
+            if (registeredUser.userRegistered) {
+              this.authCheckAndPushState();
+            }
+          });
+    }
 
-                if (this.isUserAuthorized()) {
-                  // navigate
-                  this.navigate();
-                }
-              }
-            });
-        });
+    private authCheckAndPushState():void {
+      // auth check and push state
+      this._authModel.isAuthorized = this.authCheck();
+      this.pushState();
+
+      if (this.isUserAuthorized()) {
+        // navigate
+        this.navigate();
+      }
     }
 
     // auth check
@@ -123,6 +110,27 @@ export class AuthService {
               this._router.navigate(['']);
           }
       }
+    }
+
+    // subscribe to verification state
+    private verificationStateSubscribe():void {
+      this._verifyAuthService.emitter$.subscribe((isVerified) => {
+        // log
+        this._logger.info('verification state received: ' + isVerified);
+        // get vars
+        var email = this._fbAuthService.getCurrentUser().email;
+
+        // check if user is registered
+        this._registerUserService.isUserRegisteredCheck(email)
+          .then((isUserRegistered: IsUserRegisteredModel) => {
+            // if user is not registered, register the user
+            if (!isUserRegistered.isRegistered) {
+              this.registerUser();
+            } else {
+              this.authCheckAndPushState();
+            }
+          });
+      });
     }
 
 }
