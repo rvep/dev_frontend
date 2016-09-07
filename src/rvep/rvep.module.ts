@@ -8,10 +8,8 @@ import { Logger, Options, Level } from 'angular2-logger/core';
 
 import { rvepRouterProviders, routing } from './rvep.routing';
 import { Rvep } from './rvep.component';
-import { Signin, Auth, AuthService, FirebaseAuthService,
-         VerifyAuthService, RegisterUserService } from './signin';
-import { Dashboard, Home, Profile, Events, AddEvent,
-         Navbar, Sidebar, ContentSwap, SidebarActivity } from './dashboard';
+import { DashboardModule } from './dashboard';
+import { SigninModule } from './signin';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDuRDCqn1ITVy_5gbg6ABnC2xxOR0I1grY",
@@ -26,14 +24,15 @@ export const firebaseAuthConfig = {
 }
 
 @NgModule({
-    declarations: [Rvep, Signin, Dashboard, Navbar, Sidebar,
-                   Home, Profile, Events, AddEvent, Auth],
+    declarations: [Rvep],
     imports: [BrowserModule,
               FormsModule,
               ReactiveFormsModule,
               HttpModule,
               AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
-              routing],
+              routing,
+              DashboardModule,
+              SigninModule],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [
         FIREBASE_PROVIDERS,
@@ -41,9 +40,7 @@ export const firebaseAuthConfig = {
         [{provide: APP_BASE_HREF, useValue: '/'}],
         [{provide: LocationStrategy, useClass: HashLocationStrategy}],
         [{provide: Options, useValue: { level: Level.INFO }}],
-        Logger,
-        AuthService, FirebaseAuthService, VerifyAuthService,
-        ContentSwap, SidebarActivity, RegisterUserService
+        Logger
     ],
     bootstrap: [Rvep]
 })
