@@ -22,7 +22,7 @@ export class Auth implements OnDestroy {
                 private _ngZone:NgZone,
                 private _logger:Logger) {
         // init vars
-        this._authModel = {isAuthorized:this._authService.isUserAuthorized()};
+        this._authModel = this._authService.getAuthModel();
 
         // subscribe to auth state
         this._authSubscription = this._authService.emitter$

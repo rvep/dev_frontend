@@ -10,20 +10,20 @@ import { VerifyAuthModel } from '../models';
 @Injectable()
 export class VerifyAuthService {
     // vars
-    public emitter$:EventEmitter<boolean>;
+    public emitter$:EventEmitter<VerifyAuthModel>;
     private _verifyAuthModel:VerifyAuthModel;
 
     // constructor
     constructor(private _http:Http,
                 private _logger:Logger) {
         // init vars
-        this.emitter$ = new EventEmitter<boolean>();
+        this.emitter$ = new EventEmitter<VerifyAuthModel>();
         this._verifyAuthModel = new VerifyAuthModel();
     }
 
     // push state
     private pushState() {
-        this.emitter$.emit(this._verifyAuthModel.isVerified);
+        this.emitter$.emit(this._verifyAuthModel);
     }
 
     // verify
@@ -50,8 +50,9 @@ export class VerifyAuthService {
             // process response
             .subscribe(
                 (authVerification) => {
-                    this._verifyAuthModel.isVerified = authVerification.isVerified;
-                    this.pushState();
+                  this._verifyAuthModel.isVerified = authVerification.isVerified;
+                  this._verifyAuthModel.idToken = authVerification.idToken;
+                  this.pushState();
                 },
                 (err) => this._logger.error(err),
                 () => this._logger.info('auth verification complete')

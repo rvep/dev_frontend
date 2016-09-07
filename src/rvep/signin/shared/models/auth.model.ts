@@ -1,3 +1,4 @@
 export class AuthModel {
-    public isAuthorized:boolean = false;
+  public isAuthorized:boolean = false;
+  public idToken:String = "";
 }

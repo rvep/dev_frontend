@@ -21,27 +21,28 @@ export class Dashboard implements OnInit {
 
     // on-init
     ngOnInit() {
-        // navigate if not authorized
-        this._authService.navigate();
-        // init vars
-        this._authModel = {isAuthorized:this._authService.isUserAuthorized()};
-        this._content = 'home';
+      // navigate if not authorized
+      this._authService.navigate();
+      // init vars
+      this._authModel = this._authService.getAuthModel();
 
-        // subscribe to content swap
-        this._contentSwapService.emitter$.subscribe((content) => {
-          // set new content state
-          this._content = content;
+      this._content = 'home';
 
-          // only swap for changes
-          if (this._sidebarActivityService.getActive() != content) {
-            // set active menu item
-            this._sidebarActivityService.setActive(content);
-            // toggle sidebar if it's displayed
-            if (jQuery('.sidebar').css('display') == 'block') {
-              this._sidebarActivityService.toggleSideBar();
-            }
+      // subscribe to content swap
+      this._contentSwapService.emitter$.subscribe((content) => {
+        // set new content state
+        this._content = content;
+
+        // only swap for changes
+        if (this._sidebarActivityService.getActive() != content) {
+          // set active menu item
+          this._sidebarActivityService.setActive(content);
+          // toggle sidebar if it's displayed
+          if (jQuery('.sidebar').css('display') == 'block') {
+            this._sidebarActivityService.toggleSideBar();
           }
-        });
+        }
+      });
     }
 
 }
