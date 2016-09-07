@@ -5,7 +5,7 @@ import { Logger } from 'angular2-logger/core';
 import { FirebaseAuthService } from './firebaseauth.service';
 import { VerifyAuthService } from './verifyauth.service';
 import { RegisterUserService } from './registeruser.service';
-import { AuthModel, RegisteredUserModel } from "../models";
+import { AuthModel, IsUserRegisteredModel, RegisterUserModel } from "../models";
 
 @Injectable()
 export class AuthService {
@@ -29,32 +29,51 @@ export class AuthService {
             // log
             this._logger.info('verification state received: ' + isVerified);
 
-            // auth check and push state
-            this._authModel.isAuthorized = this.authCheck(isVerified);
-            this.pushState();
+          // get vars
+          var email = this._fbAuthService.getCurrentUser().email;
+          var provider = this._fbAuthService.getCurrentUser().provider;
+          // check if user is registered
+          this._registerUserService.isUserRegisteredCheck(email)
+            .then((isUserRegistered:IsUserRegisteredModel) => {
+              // if user is not registered, register the user
+              if (!isUserRegistered.isRegistered) {
+                this._registerUserService.registerUser(email, provider)
+                  .then((registeredUser:RegisterUserModel) => {
+                    // if the user is successfully registered
+                    // proceed with authorization
+                    if (registeredUser.userRegistered) {
+                      // auth check and push state
+                      this._authModel.isAuthorized = this.authCheck();
+                      this.pushState();
 
-            if (this._authModel.isAuthorized) {
-              // get vars
-              var email = this._fbAuthService.getCurrentUser().email;
-              var provider = this._fbAuthService.getCurrentUser().provider;
-              // check if user is registered
-              this._registerUserService.isUserRegistered(email)
-                .then((registeredUser:RegisteredUserModel) => {
-                  if (!registeredUser.isRegistered) {
-                    this._registerUserService.registerUser(email, provider);
-                  }
-                });
-              // navigate
-              this.navigate();
-            }
+                      if (this.isUserAuthorized()) {
+                        // navigate
+                        this.navigate();
+                      }
+                    }
+                  });
+              } else {
+                // user is already registered, proceed with authorization
+                // auth check and push state
+                this._authModel.isAuthorized = this.authCheck();
+                this.pushState();
+
+                if (this.isUserAuthorized()) {
+                  // navigate
+                  this.navigate();
+                }
+              }
+            });
         });
     }
 
     // auth check
-    private authCheck(isVerified:boolean):boolean {
+    private authCheck():boolean {
         // user is signed in && authorized
-        if (this._fbAuthService.isUserSignedIn() && isVerified) {
-            return true;
+        if (this._fbAuthService.isUserSignedIn() &&
+            this._verifyAuthService.isUserVerified() &&
+            this._registerUserService.isUserRegistered()) {
+          return true;
         }
 
         return false;

@@ -21,7 +21,7 @@ export class FirebaseAuthService {
         this._fbUser = new FirebaseUser();
 
         // subscribe to firebase auth
-        this._af.auth.subscribe((auth: FirebaseAuthState) => {
+        this._af.auth.subscribe((auth:FirebaseAuthState) => {
           if(auth && this._authFlag) {
             // TODO:
             // this is a temporary fix for subscribe
@@ -29,11 +29,7 @@ export class FirebaseAuthService {
             this._authFlag = false;
 
             // set fb user
-            this._fbUser.uid = auth.auth.uid;
-            this._fbUser.email = auth.auth.email;
-            this._fbUser.name = auth.auth.displayName;
-            this._fbUser.picture = auth.auth.photoURL;
-            this._fbUser.provider = auth.auth.providerData[0].providerId;
+            this.setFBUser(auth);
 
             this._logger.info('user signed in');
             this._logger.info('name: ' + this._fbUser.name);
@@ -67,6 +63,16 @@ export class FirebaseAuthService {
     // check if user is signed in
     public isUserSignedIn():boolean {
         return this._fbAuthModel.isSignedIn;
+    }
+
+    // setup firebase user
+    private setFBUser(auth:FirebaseAuthState) {
+      // set fb user
+      this._fbUser.uid = auth.auth.uid;
+      this._fbUser.email = auth.auth.email;
+      this._fbUser.name = auth.auth.displayName;
+      this._fbUser.picture = auth.auth.photoURL;
+      this._fbUser.provider = auth.auth.providerData[0].providerId;
     }
 
 }

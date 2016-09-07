@@ -1,3 +1,3 @@
-export class RegisteredUserModel {
+export class IsUserRegisteredModel {
   public isRegistered:boolean = false;
 }

@@ -35,7 +35,7 @@ export class VerifyAuthService {
         var body = JSON.stringify({'idToken': idToken});
         var url = 'http://localhost:8080/api/auth/firebase/verify';
         // first http post request
-        this._http.post(url, body, {headers: headers})
+        await this._http.post(url, body, {headers: headers})
         // map response to json
             .map((res:Response) => res.json())
             // log
