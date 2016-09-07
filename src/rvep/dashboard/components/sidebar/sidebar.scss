@@ -4,6 +4,13 @@
 @import '../../../shared/sass/colors';
 @import '../../../shared/sass/utils';
 
+@mixin profile-img() {
+  width: 102px;
+  height: 102px;
+  border: .2em solid $font-color;
+  border-radius: 50%;
+}
+
 /************
  *  styles
  ************/
@@ -25,11 +32,22 @@
   margin-bottom: 2em;
 }
 
+.sidebar-user-picture {
+  margin:0px auto;
+  margin-bottom:.5em;
+  @include profile-img();
+  @include box-shadow-inset(4px, 2px, 4px, rgba(0,0,0,0.5));
+}
+
 .sidebar-user-picture img {
-  width:102px;
-  height:102px;
-  border: .2em solid $font-color;
-  border-radius: 50%;
+  display: block;
+  @include profile-img();
+}
+
+.siderbar-user-name {
+  width: 143px;
+  height: 24px;
+  overflow: hidden;
 }
 
 .sidebar li {
