@@ -15,10 +15,12 @@ export class RegisterUserService {
     this._isUserRegistered = new IsUserRegisteredModel();
   }
 
-  public async isUserRegisteredCheck(email:String):Promise<any> {
-    var headers = new Headers({"Content-Type":"application/json"});
-    var url = "http://localhost:8080/api/registration/is/user/registered";
-    url += "?email=" + email;
+  public async isUserRegisteredCheck(email:String, idToken:String):Promise<any> {
+    var headers = new Headers({
+      "Content-Type":"application/json",
+      "idToken":idToken
+    });
+    var url = "http://localhost:8080/api/app/user/is/registered?email=" + email;
 
     return await this._http.get(url, {headers: headers})
       .map((res:Response) => (res.json()))
@@ -29,10 +31,13 @@ export class RegisterUserService {
       .toPromise();
   }
 
-  public async registerUser(email:String, provider:String):Promise<any> {
-    var headers = new Headers({"Content-Type":"application/json"});
+  public async registerUser(email:String, provider:String, idToken:String):Promise<any> {
+    var headers = new Headers({
+      "Content-Type":"application/json",
+      "idToken":idToken
+    });
     var body = JSON.stringify({"email":email, "provider":provider});
-    var url = "http://localhost:8080/api/registration/register/user";
+    var url = "http://localhost:8080/api/user/register";
 
     return await this._http.post(url, body, {headers: headers})
       .map((res:Response) => (res.json()))

@@ -34,7 +34,7 @@ export class AuthService {
     var email = this._fbAuthService.getCurrentUser().email;
     var provider = this._fbAuthService.getCurrentUser().provider;
 
-      this._registerUserService.registerUser(email, provider)
+      this._registerUserService.registerUser(email, provider, this.getIdToken())
         .then((registeredUser:RegisterUserModel) => {
           // if the user is successfully registered
           // proceed with authorization
@@ -137,7 +137,7 @@ export class AuthService {
         // set id token
         this._authModel.idToken = verificationState.idToken;
         // check if user is registered
-        this._registerUserService.isUserRegisteredCheck(email)
+        this._registerUserService.isUserRegisteredCheck(email, this.getIdToken())
           .then((isUserRegistered: IsUserRegisteredModel) => {
             // if user is not registered, register the user
             if (!isUserRegistered.isRegistered) {
