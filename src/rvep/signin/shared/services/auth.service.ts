@@ -5,7 +5,7 @@ import { Logger } from 'angular2-logger/core';
 import { FirebaseAuthService } from './firebaseauth.service';
 import { VerifyAuthService } from './verifyauth.service';
 import { RegisterUserService } from './registeruser.service';
-import { AuthModel, IsUserRegisteredModel, RegisterUserModel } from "../models";
+import { AuthModel, VerifyAuthModel, UserRegistrationModel } from "../models";
 
 @Injectable()
 export class AuthService {
@@ -28,20 +28,51 @@ export class AuthService {
     this.verificationStateSubscribe();
   }
 
+  // subscribe to verification state
+  private verificationStateSubscribe():void {
+    this._verifyAuthService.emitter$.subscribe((verificationState:VerifyAuthModel) => {
+      // log
+      this._logger.info('verification state received: ' + verificationState.isVerified);
+      // get vars
+      var email = this._fbAuthService.getCurrentUser().email;
+      var provider = this._fbAuthService.getCurrentUser().provider;
+
+      // if verified
+      if (verificationState.isVerified) {
+        // set firebase idtoken
+        this._authModel.firebaseIdToken = verificationState.firebaseIdToken;
+        // check if user is registered
+        this._registerUserService.isUserRegisteredCheck(email, provider, this._authModel.firebaseIdToken)
+          .then((userRegistration:UserRegistrationModel) => {
+            // set id token
+            this._authModel.idToken = userRegistration.idToken;
+            // if user is not registered, register the user
+            if (!userRegistration.isRegistered) {
+              this.registerUser();
+            } else {
+              this.authCheckAndPushState();
+            }
+          });
+      }
+    });
+  }
+
   // register user
   private registerUser() {
     // get vars
     var email = this._fbAuthService.getCurrentUser().email;
     var provider = this._fbAuthService.getCurrentUser().provider;
 
-      this._registerUserService.registerUser(email, provider, this.getIdToken())
-        .then((registeredUser:RegisterUserModel) => {
-          // if the user is successfully registered
-          // proceed with authorization
-          if (registeredUser.userRegistered) {
-            this.authCheckAndPushState();
-          }
-        });
+    this._registerUserService.registerUser(email, provider, this._authModel.firebaseIdToken)
+      .then((userRegistration:UserRegistrationModel) => {
+        // set id token
+        this._authModel.idToken = userRegistration.idToken;
+        // if the user is successfully registered
+        // proceed with authorization
+        if (userRegistration.isRegistered) {
+          this.authCheckAndPushState();
+        }
+      });
   }
 
   // auth check and push state
@@ -122,32 +153,6 @@ export class AuthService {
             this._router.navigate(['']);
         }
     }
-  }
-
-  // subscribe to verification state
-  private verificationStateSubscribe():void {
-    this._verifyAuthService.emitter$.subscribe((verificationState) => {
-      // log
-      this._logger.info('verification state received: ' + verificationState.isVerified);
-      // get vars
-      var email = this._fbAuthService.getCurrentUser().email;
-
-      // if verified
-      if (verificationState.isVerified) {
-        // set id token
-        this._authModel.idToken = verificationState.idToken;
-        // check if user is registered
-        this._registerUserService.isUserRegisteredCheck(email, this.getIdToken())
-          .then((isUserRegistered: IsUserRegisteredModel) => {
-            // if user is not registered, register the user
-            if (!isUserRegistered.isRegistered) {
-              this.registerUser();
-            } else {
-              this.authCheckAndPushState();
-            }
-          });
-      }
-    });
   }
 
 }

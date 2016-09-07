@@ -29,11 +29,12 @@ export class VerifyAuthService {
     // verify
     public async verify(authState:FirebaseAuthState, email:String, provider:String) {
         // init request params
-        var idToken:string = "";
-        await authState.auth.getToken(true).then(token => {idToken = token});
+        await authState.auth.getToken(true).then(token => {
+          this._verifyAuthModel.firebaseIdToken = token
+        });
         var headers = new Headers({'Content-Type': 'application/json'});
         var body = JSON.stringify({
-          'idToken': idToken,
+          'idToken': this._verifyAuthModel.firebaseIdToken,
           'email': email,
           'provider': provider
         });
@@ -45,13 +46,11 @@ export class VerifyAuthService {
             // log
             .do((data) => {
               this._logger.info('is user verified? ' + data.isVerified);
-              this._logger.info('rvep idToken: ' + data.idToken);
             })
             // process response
             .subscribe(
                 (authVerification) => {
                   this._verifyAuthModel.isVerified = authVerification.isVerified;
-                  this._verifyAuthModel.idToken = authVerification.idToken;
                   this.pushState();
                 },
                 (err) => this._logger.error(err),
