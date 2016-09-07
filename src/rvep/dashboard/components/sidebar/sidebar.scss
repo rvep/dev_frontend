@@ -7,7 +7,6 @@
 @mixin profile-img() {
   width: 102px;
   height: 102px;
-  border: .2em solid $font-color;
   border-radius: 50%;
 }
 
@@ -33,14 +32,13 @@
 }
 
 .sidebar-user-picture {
-  margin:0px auto;
-  margin-bottom:.5em;
+  margin:0 auto 0.5em auto;
   @include profile-img();
-  @include box-shadow-inset(4px, 2px, 4px, rgba(0,0,0,0.5));
 }
 
 .sidebar-user-picture img {
   display: block;
+  border: .2em solid $font-color;
   @include profile-img();
 }
 
