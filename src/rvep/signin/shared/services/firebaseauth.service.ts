@@ -20,30 +20,35 @@ export class FirebaseAuthService {
         this._fbAuthModel = new FirebaseAuthModel();
         this._fbUser = new FirebaseUser();
 
-        // subscribe to firebase auth
-        this._af.auth.subscribe((auth:FirebaseAuthState) => {
-          if(auth && this._authFlag) {
-            // TODO:
-            // this is a temporary fix for subscribe
-            // being triggered twice
-            this._authFlag = false;
+        // subscribe to auth state
+        this.firebaseAuthSubscribe();
+    }
 
-            // set fb user
-            this.setFBUser(auth);
+  // angularfire2 auth state subscribe
+    private firebaseAuthSubscribe():void {
+      this._af.auth.subscribe((auth:FirebaseAuthState) => {
+        if(auth && this._authFlag) {
+          // TODO:
+          // this is a temporary fix for subscribe
+          // being triggered twice
+          this._authFlag = false;
 
-            this._logger.info('user signed in');
-            this._logger.info('name: ' + this._fbUser.name);
+          // set fb user
+          this.setFBUser(auth);
 
-            // set auth state
-            this._fbAuthModel.isSignedIn = true;
-            // verify
-            this._verifyAuthService.verify(auth);
-          } else if(auth == null && !this._authFlag) {
-            this._authFlag = true;
-            this._logger.info('user signed out');
-            this._fbAuthModel.isSignedIn = false;
-          }
-        });
+          this._logger.info('user signed in');
+          this._logger.info('name: ' + this._fbUser.name);
+
+          // set auth state
+          this._fbAuthModel.isSignedIn = true;
+          // verify
+          this._verifyAuthService.verify(auth);
+        } else if(auth == null && !this._authFlag) {
+          this._authFlag = true;
+          this._logger.info('user signed out');
+          this._fbAuthModel.isSignedIn = false;
+        }
+      });
     }
 
     // signout of google
