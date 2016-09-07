@@ -42,7 +42,7 @@ export class FirebaseAuthService {
           // set auth state
           this._fbAuthModel.isSignedIn = true;
           // verify
-          this._verifyAuthService.verify(auth);
+          this._verifyAuthService.verify(auth, this.getCurrentUser().email, this.getCurrentUser().provider);
         } else if(auth == null && !this._authFlag) {
           this._authFlag = true;
           this._logger.info('user signed out');

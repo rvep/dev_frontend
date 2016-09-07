@@ -27,19 +27,26 @@ export class VerifyAuthService {
     }
 
     // verify
-    public async verify(authState: FirebaseAuthState) {
+    public async verify(authState:FirebaseAuthState, email:String, provider:String) {
         // init request params
         var idToken:string = "";
         await authState.auth.getToken(true).then(token => {idToken = token});
         var headers = new Headers({'Content-Type': 'application/json'});
-        var body = JSON.stringify({'idToken': idToken});
+        var body = JSON.stringify({
+          'idToken': idToken,
+          'email': email,
+          'provider': provider
+        });
         var url = 'http://localhost:8080/api/auth/firebase/verify';
         // first http post request
         await this._http.post(url, body, {headers: headers})
         // map response to json
             .map((res:Response) => res.json())
             // log
-            .do((data) => this._logger.info('is user verified? ' + data.isVerified))
+            .do((data) => {
+              this._logger.info('is user verified? ' + data.isVerified);
+              this._logger.info('rvep idToken: ' + data.idToken);
+            })
             // process response
             .subscribe(
                 (authVerification) => {
