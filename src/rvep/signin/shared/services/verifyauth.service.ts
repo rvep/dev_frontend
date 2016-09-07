@@ -39,11 +39,10 @@ export class VerifyAuthService {
         // map response to json
             .map((res:Response) => res.json())
             // log
-            .do((data) => this._logger.info(data))
+            .do((data) => this._logger.info('is user verified? ' + data.isVerified))
             // process response
             .subscribe(
                 (authVerification) => {
-                    this._logger.info('is user verified? ' + authVerification.isVerified);
                     this._verifyAuthModel.isVerified = authVerification.isVerified;
                     this.pushState();
                 },
