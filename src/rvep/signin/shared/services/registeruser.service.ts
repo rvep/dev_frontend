@@ -17,15 +17,15 @@ export class RegisterUserService {
 
   public async isUserRegisteredCheck(email:String, idToken:String):Promise<any> {
     var headers = new Headers({
-      "Content-Type":"application/json",
-      "idToken":idToken
+      'Content-Type':'application/json',
+      'idToken':idToken
     });
-    var url = "http://localhost:8080/api/app/user/is/registered?email=" + email;
+    var url = 'http://localhost:8080/api/app/user/is/registered?email=' + email;
 
     return await this._http.get(url, {headers: headers})
       .map((res:Response) => (res.json()))
       .do((data:IsUserRegisteredModel) => {
-        this._logger.info("is user registered? " + data.isRegistered);
+        this._logger.info('is user registered? ' + data.isRegistered);
         this._isUserRegistered.isRegistered = data.isRegistered;
       })
       .toPromise();
@@ -33,16 +33,16 @@ export class RegisterUserService {
 
   public async registerUser(email:String, provider:String, idToken:String):Promise<any> {
     var headers = new Headers({
-      "Content-Type":"application/json",
-      "idToken":idToken
+      'Content-Type':'application/json',
+      'idToken':idToken
     });
-    var body = JSON.stringify({"email":email, "provider":provider});
-    var url = "http://localhost:8080/api/user/register";
+    var body = JSON.stringify({'email':email, 'provider':provider});
+    var url = 'http://localhost:8080/api/user/register';
 
     return await this._http.post(url, body, {headers: headers})
       .map((res:Response) => (res.json()))
       .do((data:RegisterUserModel) => {
-        this._logger.info("registered user? " + data.userRegistered);
+        this._logger.info('registered user? ' + data.userRegistered);
         this._isUserRegistered.isRegistered = data.userRegistered;
       })
       .toPromise();
@@ -51,6 +51,5 @@ export class RegisterUserService {
   public isUserRegistered():boolean {
     return this._isUserRegistered.isRegistered;
   }
-
-
+  
 }
