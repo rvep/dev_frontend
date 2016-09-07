@@ -16,9 +16,12 @@ export class RegisterUserService {
   }
 
   public async isUserRegisteredCheck(email:String, provider:String, idToken:String):Promise<any> {
-    var headers = new Headers({'Content-Type':'application/json'});
+    var headers = new Headers({
+      'Content-Type':'application/json',
+      'idToken':idToken
+    });
     var url = 'http://localhost:8080/api/registration/is/user/registered';
-    var body = JSON.stringify({'email':email, 'provider':provider, 'idToken':idToken});
+    var body = JSON.stringify({'email':email, 'provider':provider});
 
     return await this._http.post(url, body, {headers: headers})
       .map((res:Response) => (res.json()))
@@ -31,8 +34,11 @@ export class RegisterUserService {
   }
 
   public async registerUser(email:String, provider:String, idToken:String):Promise<any> {
-    var headers = new Headers({'Content-Type':'application/json'});
-    var body = JSON.stringify({'email':email, 'provider':provider, 'idToken':idToken});
+    var headers = new Headers({
+      'Content-Type':'application/json',
+      'idToken':idToken
+    });
+    var body = JSON.stringify({'email':email, 'provider':provider});
     var url = 'http://localhost:8080/api/registration/register/user';
 
     return await this._http.post(url, body, {headers: headers})
