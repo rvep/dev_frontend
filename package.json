@@ -29,6 +29,7 @@
     "server:prod": "http-server dist --cors",
     "webdriver:update": "npm run webdriver-manager update",
     "webdriver:start": "npm run webdriver-manager start",
+    "prepare:start": "npm run clean:install && npm run build",
     "start": "npm run server:dev",
     "start:hmr": "npm run server:dev:hmr",
     "test": "karma start config/karma.conf.js",
