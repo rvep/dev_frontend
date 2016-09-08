@@ -16,12 +16,12 @@ export const firebaseConfig = {
   authDomain: "rvep-dev.firebaseapp.com",
   databaseURL: "https://rvep-dev.firebaseio.comm",
   storageBucket: "rvep-dev.appspot.com"
-}
+};
 
 export const firebaseAuthConfig = {
   provider: AuthProviders.Google,
   method: AuthMethods.Popup
-}
+};
 
 @NgModule({
     declarations: [Rvep],
