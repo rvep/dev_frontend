@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
 import { AuthService } from '../../../signin';
+import { AddEventModel } from '../models';
 
 @Injectable()
 export class AddEventService {
@@ -24,9 +25,9 @@ export class AddEventService {
 
     // make request, return result
     return await this._http.post(url, body, {headers: headers})
-      .map((res:Response) => (res.json))
-      .do((data) => {
-        this._logger.info(data);
+      .map((res:Response) => (res.json()))
+      .do((data:AddEventModel) => {
+        this._logger.info('added event? ' + data.isAdded);
       })
       .toPromise();
   }
