@@ -1,1 +1,15 @@
 <div class="h3 content-title">Add Event</div>
+
+<form [formGroup]="_addEventForm" (ngSubmit)="addEvent()">
+  <p>
+    <label>Title</label>
+    <input type="text" formControlName="eventTitle">
+  </p>
+  <p>
+    <label>Description</label>
+    <input type="text" formControlName="eventDescription">
+  </p>
+  <p>
+    <button class="btn btn-primary" type="submit" [disabled]="!_addEventForm.valid">Add event</button>
+  </p>
+</form>

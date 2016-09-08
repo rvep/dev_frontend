@@ -1,8 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy, APP_BASE_HREF } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule, AuthMethods, AuthProviders, FIREBASE_PROVIDERS } from 'angularfire2';
 import { Logger, Options, Level } from 'angular2-logger/core';
 
@@ -25,11 +22,7 @@ export const firebaseAuthConfig = {
 
 @NgModule({
     declarations: [Rvep],
-    imports: [BrowserModule,
-              FormsModule,
-              ReactiveFormsModule,
-              HttpModule,
-              AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
+    imports: [AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
               routing,
               DashboardModule,
               SigninModule],
