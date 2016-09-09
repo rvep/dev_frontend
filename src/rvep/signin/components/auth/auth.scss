@@ -16,9 +16,8 @@ $google-btn-height: 2.875em;
  *  styles
  ************/
 #google-signin-wrap {
-  margin: 0 auto;
+  margin: 3.5em auto 0 auto;
   @include google-btn-dimensions();
-  padding-top: 3.5em;
 }
 
 #google-signin {
