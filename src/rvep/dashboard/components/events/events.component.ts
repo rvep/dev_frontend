@@ -28,16 +28,14 @@ export class Events implements  OnInit {
   }
 
   private openEvent(event:EventModel):void {
-    this.showEvent();
+    this.toggleEvent();
     this._openEvent = event;
   }
 
-  private showEvent() {
-    jQuery('.open-event-container').show();
-  }
-
-  private hideEvent() {
-    jQuery('.open-event-container').hide();
+  private toggleEvent() {
+    jQuery('.open-event-container')
+      .stop()
+      .animate({width: 'toggle'});
   }
 
 }
