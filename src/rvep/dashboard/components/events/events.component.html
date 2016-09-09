@@ -1,32 +1,39 @@
 <div class="h3 content-title">Events</div>
 
 <div class="container-fluid">
+  <div class="row">
 
-  <div class="open-event-container">
-    <div class="close-open-event" (click)="hideEvent()">
-      <span class="fa fa-times-circle"></span>
-    </div>
-    <div class="open-event">
-      <div class="event-title">
-        <span>{{_openEvent.title}}</span>
-      </div>
-      <div class="event-description">
-        <span>{{_openEvent.description}}</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="events-container">
-    <div *ngFor="let event of _eventsModel">
-      <div class="event" (click)="openEvent(event)">
-        <div class="event-title">
-          <span>{{event.title}}</span>
+    <div class="col-md-6">
+      <div class="open-event-container">
+        <div class="close-open-event" (click)="hideEvent()">
+          <span class="fa fa-times-circle"></span>
         </div>
-        <div class="event-description">
-          <span>{{event.description}}</span>
+        <div class="open-event">
+          <div class="event-title">
+            <span>{{_openEvent.title}}</span>
+          </div>
+          <div class="event-description">
+            <span>{{_openEvent.description}}</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
+
+    <div class="col-md-6">
+      <div class="events-container">
+        <div *ngFor="let event of _eventsModel">
+          <div class="event" (click)="openEvent(event)">
+            <div class="event-title">
+              <span>{{event.title}}</span>
+            </div>
+            <div class="event-description">
+              <span>{{event.description}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
