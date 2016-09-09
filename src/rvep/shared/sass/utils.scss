@@ -9,3 +9,9 @@
   -moz-box-shadow: inset $top $left $blur $color;
   box-shadow: inset $top $left $blur $color;
 }
+
+@mixin border-radius($radius) {
+  -webkit-border-radius:$radius;
+  -moz-border-radius:$radius;
+  border-radius:$radius;
+}
