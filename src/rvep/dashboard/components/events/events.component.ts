@@ -10,11 +10,13 @@ import { EventsService, EventModel } from '../../shared';
 export class Events implements  OnInit {
 
   private _eventsModel:Array<EventModel>;
+  private _openEvent:EventModel;
 
   constructor(private _eventsService:EventsService) {}
 
   ngOnInit() {
     this._eventsModel = new Array<EventModel>();
+    this._openEvent = new EventModel();
     this.getEvents();
   }
 
@@ -23,6 +25,19 @@ export class Events implements  OnInit {
       .then((data:Array<EventModel>) => {
         this._eventsModel = data;
       });
+  }
+
+  private openEvent(event:EventModel):void {
+    this.showEvent();
+    this._openEvent = event;
+  }
+
+  private showEvent() {
+    jQuery('.open-event-container').show();
+  }
+
+  private hideEvent() {
+    jQuery('.open-event-container').hide();
   }
 
 }
