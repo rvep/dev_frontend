@@ -1,1 +1,14 @@
 <div class="h3 content-title">Events</div>
+
+<div class="container-fluid events-container">
+  <div *ngFor="let event of _eventsModel">
+    <div class="event">
+      <div class="event-title">
+        <span>{{event.title}}</span>
+      </div>
+      <div class="event-description">
+        <span>{{event.description}}</span>
+      </div>
+    </div>
+  </div>
+</div>
