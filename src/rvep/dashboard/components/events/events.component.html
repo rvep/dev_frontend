@@ -3,7 +3,7 @@
 <div class="container-fluid">
   <div class="row">
 
-    <div class="col-md-6">
+    <div class="col-sm-12 col-md-6 col-md-push-6">
       <div class="open-event-container">
         <div class="close-open-event" (click)="hideEvent()">
           <span class="fa fa-times-circle"></span>
@@ -19,8 +19,7 @@
       </div>
     </div>
 
-
-    <div class="col-md-6">
+    <div class="col-sm-12 col-md-6 col-md-pull-6">
       <div class="events-container">
         <div *ngFor="let event of _eventsModel">
           <div class="event" (click)="openEvent(event)">
