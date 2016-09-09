@@ -24,8 +24,11 @@ export class AddEvent implements OnInit {
 
   ngOnInit() {
     // init vars
-    this. _eventTitle = new FormControl('', Validators.required);
-    this._eventDescription = new FormControl('', Validators.required);
+    var validators = Validators.compose([Validators.required,
+                                         Validators.minLength(3),
+                                         Validators.maxLength(255)]);
+    this. _eventTitle = new FormControl('', validators);
+    this._eventDescription = new FormControl('', validators);
     this._addEventForm = this._formBuilder.group({
       'eventTitle': this._eventTitle,
       'eventDescription': this._eventDescription

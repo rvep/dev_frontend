@@ -1,3 +1,48 @@
+/************
+ *  imports
+ ************/
+@import '../../../shared/sass/colors';
+@import '../../../shared/sass/utils';
+
+/************
+ *  styles
+ ************/
+
+.add-event-form {
+  padding: 1em;
+}
+
 input {
   color: black;
+  padding-left: 1em;
+  @include border-radius(.5em);
+}
+
+p label {
+  display: block;
+}
+
+.ng-valid[required], .ng-valid.required  {
+   border-left: 5px solid #42A948; /* green */
+ }
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.form-submit {
+  margin-top: 4em;
+}
+
+.btn-custom {
+  background: $color-teal;
+  border: 0px;
+}
+
+.btn-custom:hover {
+  background: $color-teal2;
+}
+
+.btn-custom:disabled {
+  background: gray;
 }
