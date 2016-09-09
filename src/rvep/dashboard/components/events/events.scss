@@ -51,7 +51,7 @@
   @media (min-width: 768px) {
     position: fixed;
     top: 7em;
-    width: 25em;
+    @include make-col(5)
   }
 }
 
