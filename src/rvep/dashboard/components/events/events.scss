@@ -31,9 +31,13 @@
 
 .event-title {
   font-size: 2em;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .event-description {
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .open-event-container {
