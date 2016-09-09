@@ -28,7 +28,12 @@ export class Events implements  OnInit {
   }
 
   private openEvent(event:EventModel):void {
-    this.toggleEvent();
+    // only toggle display if container is not open
+    var display = jQuery('.open-event-container').css('display');
+    if (display == 'none') {
+      this.toggleEvent();
+    }
+    // load new model
     this._openEvent = event;
   }
 
