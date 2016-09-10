@@ -21,6 +21,15 @@ export class EventItem implements  OnInit {
     this._eventSwapService.emitter$.subscribe((event:EventModel) => {
       this._event = event;
       this.getEventItems(event);
+
+      if (!this.isEventOpen()) {
+        this.toggleEvent();
+      } else {
+        var container = $('.open-event-container');
+        container.css('opacity', 0);
+        container.animate({opacity: 1}, {queue: false, duration: 'slow'});
+      }
+
     });
   }
 
@@ -31,20 +40,24 @@ export class EventItem implements  OnInit {
       });
   }
 
-  private openEvent(event:EventModel):void {
-    // only toggle display if container is not open
-    var display = jQuery('.open-event-container').css('display');
-    if (display == 'none') {
-      this.toggleEvent();
+  private toggleEvent() {
+    var container = $('.open-event-container');
+
+    if (this.isEventOpen()) {
+      container.stop()
+        .animate({opacity: 0}, {queue: false, duration: 'slow'});
+    } else {
+      container.stop()
+        .animate({opacity: 1}, {queue: false, duration: 'slow'});
     }
-    // load new model
-    this._event = event;
+
+    container
+      .animate({width: 'toggle'}, 'slow');
   }
 
-  private toggleEvent() {
-    jQuery('.open-event-container')
-      .stop()
-      .animate({width: 'toggle'});
+  private isEventOpen():boolean {
+    var display = $('.open-event-container').css('display');
+    return display != 'none';
   }
 
 }

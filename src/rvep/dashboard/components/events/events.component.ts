@@ -29,18 +29,8 @@ export class Events implements  OnInit {
 
   private openEvent(event:EventModel):void {
     // only toggle display if container is not open
-    var display = jQuery('.open-event-container').css('display');
-    if (display == 'none') {
-      this.toggleEvent();
-    }
     // swap event
     this._eventSwapService.swap(event);
-  }
-
-  private toggleEvent() {
-    jQuery('.open-event-container')
-      .stop()
-      .animate({width: 'toggle'});
   }
 
 }

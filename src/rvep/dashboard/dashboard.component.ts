@@ -38,7 +38,7 @@ export class Dashboard implements OnInit {
           // set active menu item
           this._sidebarActivityService.setActive(content);
           // toggle sidebar if it's displayed
-          if (jQuery('.sidebar').css('display') == 'block') {
+          if ($('.sidebar').css('display') == 'block') {
             this._sidebarActivityService.toggleSideBar();
           }
         }

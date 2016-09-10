@@ -10,7 +10,7 @@ export class SidebarActivity {
     }
 
     public toggleSideBar() {
-      jQuery('.sidebar')
+      $('.sidebar')
         .stop()
         .animate({width: 'toggle'});
     }
@@ -18,9 +18,9 @@ export class SidebarActivity {
     public setActive(content:String) {
       // find li item with active class
       // remove active class
-      jQuery('li.active').removeClass('active');
+      $('li.active').removeClass('active');
       // set active
-      jQuery('#' + content).addClass('active');
+      $('#' + content).addClass('active');
       this._active = content;
     }
 
