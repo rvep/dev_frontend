@@ -13,6 +13,7 @@
       "paths": [],
       "types": [
         "jasmine",
+        "jquery",
         "lodash",
         "node",
         "source-map",

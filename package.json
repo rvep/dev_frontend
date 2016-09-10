@@ -60,6 +60,7 @@
   },
   "devDependencies": {
     "@types/jasmine": "^2.2.33",
+    "@types/jquery": "^1.10.31",
     "@types/lodash": "4.14.34",
     "@types/node": "^6.0.38",
     "@types/source-map": "^0.1.26",
