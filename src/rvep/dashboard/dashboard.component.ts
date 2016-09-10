@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { AuthService, AuthModel } from '../signin';
-import { ContentSwap, SidebarActivity } from './shared';
+import { ContentSwapService, SidebarActivity } from './shared';
 
 @Component({
     selector: 'dashboard',
@@ -16,7 +16,7 @@ export class Dashboard implements OnInit {
 
     // constructor
     constructor(private _authService:AuthService,
-                private _contentSwapService:ContentSwap,
+                private _contentSwapService:ContentSwapService,
                 private _sidebarActivityService:SidebarActivity) {}
 
     // on-init

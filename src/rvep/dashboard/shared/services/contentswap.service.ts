@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable()
-export class ContentSwap {
+export class ContentSwapService {
 
   public emitter$:EventEmitter<String>;
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ContentSwap, SidebarActivity } from '../../shared';
+import { ContentSwapService, SidebarActivity } from '../../shared';
 
 @Component({
   selector: 'navbar',
@@ -9,7 +9,7 @@ import { ContentSwap, SidebarActivity } from '../../shared';
 })
 export class Navbar {
 
-  constructor (private _contentSwapService:ContentSwap,
+  constructor (private _contentSwapService:ContentSwapService,
                private _sidebarActivityService:SidebarActivity) {}
 
   private contentSwap(content:String) {

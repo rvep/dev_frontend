@@ -1,22 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
-import { EventsService, EventModel } from '../../shared';
+import { EventsService, EventModel, EventSwapService } from '../../shared';
 
 @Component({
   selector: 'events',
   templateUrl: 'events.component.html',
-  styleUrls: ['events.scss']
+  styleUrls: ['events.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class Events implements  OnInit {
 
   private _eventsModel:Array<EventModel>;
-  private _openEvent:EventModel;
 
-  constructor(private _eventsService:EventsService) {}
+  constructor(private _eventsService:EventsService,
+              private _eventSwapService:EventSwapService) {}
 
   ngOnInit() {
-    this._eventsModel = new Array<EventModel>();
-    this._openEvent = new EventModel();
+    this._eventsModel = [];
     this.getEvents();
   }
 
@@ -33,8 +33,8 @@ export class Events implements  OnInit {
     if (display == 'none') {
       this.toggleEvent();
     }
-    // load new model
-    this._openEvent = event;
+    // swap event
+    this._eventSwapService.swap(event);
   }
 
   private toggleEvent() {

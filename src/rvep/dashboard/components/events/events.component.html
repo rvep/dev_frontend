@@ -3,7 +3,7 @@
 
     <div class="events-container col-sm-12 col-md-12">
       <div *ngFor="let event of _eventsModel">
-        <div class="col-sm-12 col-md-6">
+        <div class="col-sm-12 col-md-6 col-lg-4">
           <div class="event" (click)="openEvent(event)">
             <div class="event-title">
               <span>{{event.title}}</span>
@@ -16,21 +16,7 @@
       </div>
     </div>
 
-    <div class="col-sm-12 col-md-6">
-      <div class="open-event-container">
-        <div class="close-open-event" (click)="toggleEvent()">
-          <span class="fa fa-times-circle"></span>
-        </div>
-        <div class="open-event">
-          <div class="event-title">
-            <span>{{_openEvent.title}}</span>
-          </div>
-          <div class="event-description">
-            <span>{{_openEvent.description}}</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <eventitem></eventitem>
 
   </div>
 </div>

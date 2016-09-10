@@ -39,38 +39,3 @@
   overflow: hidden;
   white-space: nowrap;
 }
-
-.open-event-container {
-  display: none;
-  background-color: $color-teal;
-  position: fixed;
-  right: 0;
-  left: 0;
-  top: 7em;
-  margin: .1em auto .1em auto;
-  padding: 1em;
-  z-index:1001;
-  @include box-shadow(1px, 2px, 4px, rgba(0,0,0,.5));
-  @include border-radius(1em);
-
-  @media (min-width: 768px) {
-    margin: 1em;
-  }
-}
-
-.open-event {
-  background-color: $color-deep-purple2;
-  margin: 1em;
-  padding: 1em;
-  border: .2em solid $font-color;
-  @include border-radius(1em);
-}
-
-.close-open-event {
-  float: right;
-  cursor: pointer;
-}
-
-.close-open-event:hover {
-  color: $color-deep-purple;
-}

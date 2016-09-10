@@ -5,13 +5,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthService, FirebaseAuthService } from '../signin';
 import { Dashboard } from './dashboard.component';
-import { Home, Profile, Events, AddEvent, Navbar, Sidebar } from './components';
-import { ContentSwap, SidebarActivity, AddEventService, EventsService } from './shared';
+import { Home, Profile, Events, AddEvent, Navbar, Sidebar, EventItem } from './components';
+import { ContentSwapService, SidebarActivity, AddEventService, EventsService,
+         EventSwapService } from './shared';
 
 @NgModule({
-  declarations: [Dashboard, Navbar, Sidebar, Home, Profile, Events, AddEvent],
+  declarations: [Dashboard, Navbar, Sidebar, Home, Profile, Events, AddEvent, EventItem],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpModule],
-  providers: [ContentSwap, SidebarActivity, AuthService, FirebaseAuthService,
-              AddEventService, EventsService]
+  providers: [ContentSwapService, SidebarActivity, AuthService, FirebaseAuthService,
+              AddEventService, EventsService, EventSwapService]
 })
 export class DashboardModule {}

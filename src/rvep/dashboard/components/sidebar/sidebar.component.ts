@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 import { AuthService, FirebaseAuthService, FirebaseUser } from '../../../signin';
-import { ContentSwap } from '../../';
+import { ContentSwapService } from '../../';
 
 @Component({
   selector: 'sidebar',
@@ -14,7 +14,7 @@ export class Sidebar implements OnInit, AfterViewInit {
   // constructor
   constructor(private _authService:AuthService,
               private _fbAuthService:FirebaseAuthService,
-              private _contentSwapService:ContentSwap) {}
+              private _contentSwapService:ContentSwapService) {}
 
   // on-init
   ngOnInit() {

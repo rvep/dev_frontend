@@ -1,0 +1,33 @@
+<div class="col-sm-12 col-md-6">
+  <div class="open-event-container">
+
+    <div class="close-open-event" (click)="toggleEvent()">
+      <span class="fa fa-times-circle"></span>
+    </div>
+
+    <div class="open-event">
+
+      <div class="stats-container">
+
+        <div class="event-items-count">
+          <span class="label label-custom stats-container-label">Items</span>
+          <span>{{_eventItemsModel.length}}</span>
+        </div>
+
+      </div>
+
+      <div class="event-menu">
+        <span class="fa fa-navicon"></span>
+      </div>
+
+      <div class="event-title">
+        <span>{{_event.title}}</span>
+      </div>
+
+      <div class="event-description">
+        <span>{{_event.description}}</span>
+      </div>
+    </div>
+
+  </div>
+</div>
