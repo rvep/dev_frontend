@@ -43,15 +43,18 @@
 .open-event-container {
   display: none;
   background-color: $color-teal;
-  padding: .5em;
-  margin: .5em;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 7em;
+  margin: .1em auto .1em auto;
+  padding: 1em;
+  z-index:1001;
   @include box-shadow(1px, 2px, 4px, rgba(0,0,0,.5));
   @include border-radius(1em);
 
   @media (min-width: 768px) {
-    position: fixed;
-    top: 7em;
-    @include make-col(5)
+    margin: 1em;
   }
 }
 
