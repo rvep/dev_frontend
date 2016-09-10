@@ -30,6 +30,10 @@ export class EventItem implements  OnInit {
         container.animate({opacity: 1}, {queue: false, duration: 'slow'});
       }
 
+      if (this.isEventMenuOpen()) {
+        this.toggleEventMenu();
+      }
+
     });
   }
 
@@ -42,7 +46,7 @@ export class EventItem implements  OnInit {
 
   private toggleEventMenu() {
     var container = $('.event-menu');
-    container.stop().animate({width: 'toggle'}, 'slow');
+    container.stop().animate({width: 'toggle'}, 'fast');
   }
 
   private toggleEvent() {
@@ -61,6 +65,11 @@ export class EventItem implements  OnInit {
 
   private isEventOpen():boolean {
     var display = $('.open-event-container').css('display');
+    return display != 'none';
+  }
+
+  private isEventMenuOpen():boolean {
+    var display = $('.event-menu').css('display');
     return display != 'none';
   }
 
