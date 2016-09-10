@@ -40,6 +40,11 @@ export class EventItem implements  OnInit {
       });
   }
 
+  private toggleEventMenu() {
+    var container = $('.event-menu');
+    container.stop().animate({width: 'toggle'}, 'slow');
+  }
+
   private toggleEvent() {
     var container = $('.open-event-container');
 
@@ -51,8 +56,7 @@ export class EventItem implements  OnInit {
         .animate({opacity: 1}, {queue: false, duration: 'slow'});
     }
 
-    container
-      .animate({width: 'toggle'}, 'slow');
+    container.animate({width: 'toggle'}, 'slow');
   }
 
   private isEventOpen():boolean {

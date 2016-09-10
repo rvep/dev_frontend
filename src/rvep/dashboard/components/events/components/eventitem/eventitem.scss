@@ -55,19 +55,46 @@
   background: $color-teal;
 }
 
-.event-menu {
+.event-menu-icon {
   position: absolute;
   bottom: 2.5em;
   right: 4em;
 }
 
-.event-menu:hover {
+.event-menu-icon:hover {
   color: $color-teal;
   cursor: pointer;
 }
 
-.event-menu span {
+.event-menu-icon span {
   font-size: 2em;
+}
+
+.event-menu {
+  display: none;
+  position: absolute;
+  bottom: 2.5em;
+  right: 6em;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.event-menu li {
+  display: inline-block;
+  background: $color-deep-purple;
+  border: .2em solid $color-teal;
+  padding: .5em;
+  @include border-radius(1em);
+}
+
+.event-menu li:hover {
+  cursor: pointer;
+  @include box-shadow(0px, 2px, 12px, rgba(0,0,0,0.5));
+}
+
+.event-menu li a {
+  color: $font-color;
+  text-decoration: none;
 }
 
 .open-event-title {

@@ -14,8 +14,18 @@
         </div>
       </div>
 
-      <div class="event-menu">
+      <div class="event-menu-icon" (click)="toggleEventMenu()">
         <span class="fa fa-navicon"></span>
+      </div>
+
+      <div class="event-menu">
+        <div class="container">
+          <ul class="nav">
+            <li id="home" class="active sidebar-item" (click)="contentSwap('home')">
+              <a><span class="fa fa-plus"></span><span>Add Item</span></a>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div class="open-event-title">
