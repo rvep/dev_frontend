@@ -69,3 +69,16 @@
 .event-menu span {
   font-size: 2em;
 }
+
+.open-event-title {
+  max-width: 85%;
+  font-size: 2em;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.open-event-description {
+  max-width: 85%;
+  overflow: hidden;
+  white-space: nowrap;
+}
