@@ -22,7 +22,7 @@ export class EventItem implements  OnInit {
       this._event = event;
       this.getEventItems(event);
 
-      if (!this.isEventOpen()) {
+      if (!this.isOpen('.open-event-container')) {
         this.toggleEvent();
       } else {
         var container = $('.open-event-container');
@@ -30,11 +30,15 @@ export class EventItem implements  OnInit {
         container.animate({opacity: 1}, {queue: false, duration: 'slow'});
       }
 
-      if (this.isEventMenuOpen()) {
+      if (this.isOpen('.event-menu')) {
         this.toggleEventMenu();
       }
 
     });
+  }
+
+  private addItem():void {
+
   }
 
   private getEventItems(event:EventModel):void {
@@ -50,26 +54,15 @@ export class EventItem implements  OnInit {
   }
 
   private toggleEvent() {
-    var container = $('.open-event-container');
-
-    if (this.isEventOpen()) {
-      container.stop()
-        .animate({opacity: 0}, {queue: false, duration: 'slow'});
-    } else {
-      container.stop()
-        .animate({opacity: 1}, {queue: false, duration: 'slow'});
-    }
-
+    var cssClass = '.open-event-container';
+    var container = $(cssClass);
+    container.animate({opacity: this.isOpen(cssClass) ? 0 : 1},
+                      {queue: false, duration: 'slow'});
     container.animate({width: 'toggle'}, 'slow');
   }
 
-  private isEventOpen():boolean {
-    var display = $('.open-event-container').css('display');
-    return display != 'none';
-  }
-
-  private isEventMenuOpen():boolean {
-    var display = $('.event-menu').css('display');
+  private isOpen(cssClass:String):boolean {
+    var display = $(cssClass).css('display');
     return display != 'none';
   }
 
