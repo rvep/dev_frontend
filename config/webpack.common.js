@@ -81,6 +81,11 @@ module.exports = {
     postcss: [autoprefixer],
 
     plugins: [
+        new webpack.ContextReplacementPlugin(
+          /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+          __dirname
+        ),
+
         new ExtractTextPlugin({
             filename: 'css/[name].css',
             disable: false, allChunks: true
@@ -106,8 +111,19 @@ module.exports = {
             jquery: 'jquery',
             "window.moment": "moment",
             'Tether': 'tether',
-            'window.Tether': 'tether'
-        }),
+            'window.Tether': 'tether',
+            Tooltip: "exports?Tooltip!bootstrap/js/dist/tooltip",
+            Alert: "exports?Alert!bootstrap/js/dist/alert",
+            Button: "exports?Button!bootstrap/js/dist/button",
+            Carousel: "exports?Carousel!bootstrap/js/dist/carousel",
+            Collapse: "exports?Collapse!bootstrap/js/dist/collapse",
+            Dropdown: "exports?Dropdown!bootstrap/js/dist/dropdown",
+            Modal: "exports?Modal!bootstrap/js/dist/modal",
+            Popover: "exports?Popover!bootstrap/js/dist/popover",
+            Scrollspy: "exports?Scrollspy!bootstrap/js/dist/scrollspy",
+            Tab: "exports?Tab!bootstrap/js/dist/tab",
+            Util: "exports?Util!bootstrap/js/dist/util"
+        })
     ],
 
     node: {

@@ -13,18 +13,10 @@ const METADATA = webpackMerge(commonConfig.metadata, {
     HMR: HMR
 });
 
-const bootstraploader = 'bootstrap-loader/lib/bootstrap.loader?' +
-          `configFilePath=${__dirname}/.bootstraprc` +
-          '!bootstrap-loader/no-op.js';
-
 module.exports = webpackMerge(commonConfig, {
     metadata: METADATA,
     debug: true,
     devtool: 'cheap-module-eval-source-map',
-
-    entry: {
-        bootstraploader
-    },
 
     output: {
         path: helpers.root('dist'),

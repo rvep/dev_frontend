@@ -13,6 +13,7 @@ import 'jquery';
 import 'font-awesome-sass-loader';
 import 'lodash';
 import 'angular2-logger';
+import 'bootstrap-loader';
 
 if (ENV === 'production') {
   // prod
