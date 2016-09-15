@@ -45,7 +45,7 @@
     "@angular/platform-browser-dynamic": "2.0.0",
     "@angular/platform-server": "2.0.0",
     "@angular/router": "3.0.0",
-    "angularfire2": "^2.0.0-beta.4",
+    "angularfire2": "^2.0.0-beta.5",
     "bootstrap": "4.0.0-alpha.4",
     "core-js": "^2.4.1",
     "firebase": "^3.4.0",
