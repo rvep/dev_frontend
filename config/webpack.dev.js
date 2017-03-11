@@ -1,5 +1,6 @@
+/* webpack.dev.js */
+const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const commonConfig = require('./webpack.common.js');
 const helpers = require('./helpers');
@@ -14,8 +15,6 @@ const METADATA = webpackMerge(commonConfig.metadata, {
 });
 
 module.exports = webpackMerge(commonConfig, {
-    metadata: METADATA,
-    debug: true,
     devtool: 'cheap-module-eval-source-map',
 
     output: {
@@ -37,6 +36,13 @@ module.exports = webpackMerge(commonConfig, {
                 'HMR': METADATA.HMR
             }
         }),
+        
+        new webpack.LoaderOptionsPlugin({
+          debug: true,
+          options: {
+            metadata: METADATA,
+          }
+        }),
     ],
 
     devServer: {
@@ -47,12 +53,11 @@ module.exports = webpackMerge(commonConfig, {
             aggregateTimeout: 300,
             poll: 1000
         },
-        outputPath: helpers.root('dist')
     },
 
     node: {
-        global: 'window',
-        crypto: 'empty',
+        global: true,
+        crypto: false,
         process: true,
         module: false,
         clearImmediate: false,

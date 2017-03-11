@@ -1,3 +1,4 @@
+/* spec-bundle.js */
 /**
  * @author: @AngularClass
  */
@@ -25,8 +26,8 @@ var testing = require('@angular/core/testing');
 var browser = require('@angular/platform-browser-dynamic/testing');
 
 testing.TestBed.initTestEnvironment(
-  browser.BrowserDynamicTestingModule,
-  browser.platformBrowserDynamicTesting()
+    browser.BrowserDynamicTestingModule,
+    browser.platformBrowserDynamicTesting()
 );
 
 /*

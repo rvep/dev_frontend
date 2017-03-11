@@ -6,18 +6,16 @@ import '@angular/common';
 import '@angular/forms';
 import '@angular/http';
 import '@angular/router';
+
 import 'rxjs';
-import 'firebase';
-import 'angularfire2';
 import 'jquery';
+import 'bootstrap-loader';
 import 'font-awesome-sass-loader';
 import 'lodash';
-import 'angular2-logger';
-import 'bootstrap-loader';
 
 if (ENV === 'production') {
   // prod
 } else {
   // dev
-  require('angular2-hmr');
+  require('@angularclass/hmr');
 }
